@@ -2,6 +2,7 @@ import 'package:brofile/features/community/controllers/community_controller.dart
 import 'package:brofile/features/discover/controllers/discover_controller.dart';
 import 'package:brofile/features/home/controllers/home_controller.dart';
 import 'package:brofile/features/pleasure/controllers/pleasure_controller.dart';
+import 'package:brofile/features/profile/controllers/profile_controller.dart';
 import 'package:get/get.dart';
 
 enum NavTab { home, community, pleasure, discover, profile }
@@ -23,7 +24,7 @@ class MainNavController extends GetxController {
         case NavTab.discover:
           Get.find<DiscoverController>().scrollToTop();
         case NavTab.profile:
-          break;
+          Get.find<ProfileController>().scrollToTop();
       }
       return;
     }

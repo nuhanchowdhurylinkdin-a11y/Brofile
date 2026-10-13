@@ -198,6 +198,11 @@ class CommunityController extends GetxController {
       .where((community) => community.isJoined.value && _matches(community))
       .toList();
 
+  List<CommunityItem> get joinedCommunities => _sections.values
+      .expand((items) => items)
+      .where((community) => community.isJoined.value)
+      .toList();
+
   bool get hasResults =>
       CommunitySection.values
           .where((s) => s != CommunitySection.other)

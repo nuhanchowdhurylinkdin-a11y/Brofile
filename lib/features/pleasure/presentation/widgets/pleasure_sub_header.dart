@@ -11,11 +11,13 @@ class PleasureSubHeader extends StatelessWidget {
     required this.title,
     required this.onBack,
     this.onClose,
+    this.showClose = true,
   });
 
   final String title;
   final VoidCallback onBack;
   final VoidCallback? onClose;
+  final bool showClose;
 
   @override
   Widget build(BuildContext context) {
@@ -48,19 +50,22 @@ class PleasureSubHeader extends StatelessWidget {
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: onClose ?? onBack,
-                behavior: HitTestBehavior.opaque,
-                child: SizedBox(
-                  width: 24.w,
-                  height: 24.w,
-                  child: SvgPicture.asset(
-                    IconPath.pleasureClose,
+              if (showClose)
+                GestureDetector(
+                  onTap: onClose ?? onBack,
+                  behavior: HitTestBehavior.opaque,
+                  child: SizedBox(
                     width: 24.w,
                     height: 24.w,
+                    child: SvgPicture.asset(
+                      IconPath.pleasureClose,
+                      width: 24.w,
+                      height: 24.w,
+                    ),
                   ),
-                ),
-              ),
+                )
+              else
+                SizedBox(width: 24.w, height: 24.w),
             ],
           ),
         ),

@@ -171,6 +171,8 @@ class HomeController extends GetxController {
 
   late final List<FeedEntry> _feed = _buildFeed();
 
+  List<FeedEntry> get feed => _feed;
+
   static const String _postText =
       'Just wrapped up an incredible hike through Redwood National Park! '
       'The scenery was stunning and the trails pushed me to my limits. '

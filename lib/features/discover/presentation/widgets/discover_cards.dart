@@ -381,12 +381,14 @@ class DiscoverEventCard extends StatelessWidget {
     required this.onInterested,
     required this.onDetails,
     this.actionColor = AppColors.orange,
+    this.interestedLabel = AppText.interested,
   });
 
   final EventModel event;
   final VoidCallback onInterested;
   final VoidCallback onDetails;
   final Color actionColor;
+  final String interestedLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -535,7 +537,7 @@ class DiscoverEventCard extends StatelessWidget {
                           ),
                           SizedBox(width: 6.w),
                           Text(
-                            AppText.interested,
+                            interestedLabel,
                             style: manrope(
                               14,
                               weight: FontWeight.w600,

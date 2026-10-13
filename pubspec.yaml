@@ -88,6 +88,8 @@ flutter:
     - assets/pleasure_image/
     - assets/discover_icon/
     - assets/discover_image/
+    - assets/profile_icon/
+    - assets/profile_image/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

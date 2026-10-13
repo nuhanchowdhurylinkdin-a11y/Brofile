@@ -91,6 +91,33 @@ class IconPath{
   static const String peakfitBadge = '$_discover/peakfit_badge.svg';
   static const String trash = '$_discover/trash.svg';
 
+  // Profile
+  static const String _profile = 'assets/profile_icon';
+  static const String profileCoverEdit = '$_profile/cover_edit.svg';
+  static const String profilePin = '$_profile/pin.svg';
+  static const String profileLink = '$_profile/link.svg';
+  static const String profileAbout = '$_profile/about.svg';
+  static const String profileHobbies = '$_profile/hobbies.svg';
+  static const String profileCommunities = '$_profile/communities.svg';
+  static const String profileCircle = '$_profile/circle.svg';
+  static const String profileAspirations = '$_profile/aspirations.svg';
+  static const String profilePlus = '$_profile/plus.svg';
+  static const String profileAdd = '$_profile/add_plus.svg';
+  static const String profileRemove = '$_profile/remove_x.svg';
+  static const String profileCalendar = '$_profile/calendar.svg';
+  static const String profileMarker = '$_profile/marker.svg';
+  static const String profileMic = '$_profile/mic.svg';
+  static const String profileAlbum = '$_profile/album.svg';
+  static const String profilePlay = '$_profile/play.svg';
+  static const String interestHiking = '$_profile/interest_hiking.svg';
+  static const String interestCamping = '$_profile/interest_camping.svg';
+  static const String interestPhoto = '$_profile/interest_photo.svg';
+  static const String interestTravel = '$_profile/interest_travel.svg';
+  static const String interestBike = '$_profile/interest_bike.svg';
+  static const String interestFishing = '$_profile/interest_fishing.svg';
+  static const String interestReading = '$_profile/interest_reading.svg';
+  static const String interestMusic = '$_profile/interest_music.svg';
+
   // Comments
   static const String _comment = 'assets/comment_icon';
   static const String commentImage = '$_comment/image.svg';
