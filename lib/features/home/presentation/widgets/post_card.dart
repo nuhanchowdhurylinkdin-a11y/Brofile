@@ -1,6 +1,9 @@
+import 'dart:ui' show lerpDouble;
+
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
 import 'package:brofile/features/home/controllers/home_controller.dart';
+import 'package:brofile/features/home/controllers/stack_swipe_controller.dart';
 import 'package:brofile/features/home/data/models/home_models.dart';
 import 'package:brofile/features/home/presentation/widgets/home_text.dart';
 import 'package:brofile/features/home/presentation/widgets/post_sheets.dart';
@@ -39,7 +42,6 @@ class PostCard extends GetView<HomeController> {
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Container(
         padding: EdgeInsets.all(15.w),
-        clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           border: Border.all(color: AppColors.neutral100),
           borderRadius: BorderRadius.circular(12.r),
@@ -198,69 +200,105 @@ class _RoundedImage extends StatelessWidget {
   }
 }
 
-/// Three overlapping, tilted photos. Tap or swipe to bring the next one forward.
-class _StackGallery extends GetView<HomeController> {
+/// Three overlapping, tilted photos. Drag the top photo sideways and throw it
+/// off either edge, or tap it, to bring the next one forward.
+class _StackGallery extends StatelessWidget {
   const _StackGallery({required this.post});
 
   final PostModel post;
 
   static const double _tilt = 0.0698; // 4 degrees
+  static const double _maxDragTilt = 0.35;
+
+  StackSwipeController get _swipe => Get.isRegistered<StackSwipeController>(tag: post.id)
+      ? Get.find<StackSwipeController>(tag: post.id)
+      : Get.put(StackSwipeController(post), tag: post.id);
 
   @override
   Widget build(BuildContext context) {
+    final swipe = _swipe;
     final imageWidth = 188.w;
     final imageHeight = 221.w;
     final sideOffset = 42.5.w;
+    swipe
+      ..swipeDistance = imageWidth * 0.5
+      ..flyOutDistance = 1.sw;
 
     return GestureDetector(
-      onTap: () => controller.nextStackImage(post),
-      onHorizontalDragEnd: (details) {
-        final velocity = details.primaryVelocity ?? 0;
-        if (velocity < 0) controller.nextStackImage(post);
-        if (velocity > 0) controller.previousStackImage(post);
-      },
+      onTap: swipe.swipeLeft,
+      onHorizontalDragUpdate: (details) => swipe.onDragUpdate(details.delta),
+      onHorizontalDragEnd: (details) => swipe.onDragEnd(details.primaryVelocity ?? 0),
       child: SizedBox(
         height: 234.w,
         width: double.infinity,
         child: LayoutBuilder(
           builder: (context, constraints) {
             final centerLeft = (constraints.maxWidth - imageWidth) / 2;
+            final topSlot = (left: centerLeft, top: 5.w, angle: 0.0);
+            final rightSlot = (left: centerLeft + sideOffset, top: 5.5.w, angle: _tilt);
+            final leftSlot = (left: centerLeft - sideOffset, top: 5.5.w, angle: -_tilt);
 
-            Widget card(int offset, double left, double top, double angle) {
+            Widget photo(String image) => ClipRRect(
+                  borderRadius: BorderRadius.circular(12.r),
+                  child: Image.asset(
+                    image,
+                    width: imageWidth,
+                    height: imageHeight,
+                    fit: BoxFit.cover,
+                    gaplessPlayback: true,
+                  ),
+                );
+
+            Widget card({
+              required String image,
+              required double left,
+              required double top,
+              required double angle,
+              double opacity = 1,
+            }) {
               return Positioned(
                 left: left,
                 top: top,
-                child: Transform.rotate(
-                  angle: angle,
-                  child: Obx(() {
-                    final count = post.images.length;
-                    final image = post.images[(post.stackIndex.value + offset) % count];
-                    return AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 250),
-                      child: ClipRRect(
-                        key: ValueKey(image),
-                        borderRadius: BorderRadius.circular(12.r),
-                        child: Image.asset(
-                          image,
-                          width: imageWidth,
-                          height: imageHeight,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    );
-                  }),
+                child: Opacity(
+                  opacity: opacity,
+                  child: Transform.rotate(angle: angle, child: photo(image)),
                 ),
               );
             }
 
-            return Stack(
-              clipBehavior: Clip.none,
-              children: [
-                card(2, centerLeft - sideOffset, 5.5.w, -_tilt),
-                card(1, centerLeft + sideOffset, 5.5.w, _tilt),
-                card(0, centerLeft, 5.w, 0),
-              ],
-            );
+            return Obx(() {
+              final count = post.images.length;
+              final index = post.stackIndex.value;
+              final drag = swipe.drag.value;
+              final p = Curves.easeOut.transform(swipe.progress);
+              String imageAt(int offset) => post.images[(index + offset) % count];
+
+              return Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  card(
+                    image: imageAt(2),
+                    left: lerpDouble(leftSlot.left, rightSlot.left, p)!,
+                    top: lerpDouble(leftSlot.top, rightSlot.top, p)!,
+                    angle: lerpDouble(leftSlot.angle, rightSlot.angle, p)!,
+                    opacity: swipe.backOpacity.value,
+                  ),
+                  card(
+                    image: imageAt(1),
+                    left: lerpDouble(rightSlot.left, topSlot.left, p)!,
+                    top: lerpDouble(rightSlot.top, topSlot.top, p)!,
+                    angle: lerpDouble(rightSlot.angle, topSlot.angle, p)!,
+                  ),
+                  card(
+                    image: imageAt(0),
+                    left: topSlot.left + drag.dx,
+                    top: topSlot.top + drag.dy,
+                    angle: (drag.dx / constraints.maxWidth * _maxDragTilt)
+                        .clamp(-_maxDragTilt, _maxDragTilt),
+                  ),
+                ],
+              );
+            });
           },
         ),
       ),

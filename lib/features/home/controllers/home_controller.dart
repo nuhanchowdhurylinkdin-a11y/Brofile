@@ -287,11 +287,6 @@ class HomeController extends GetxController {
   void nextStackImage(PostModel post) =>
       post.stackIndex.value = (post.stackIndex.value + 1) % post.images.length;
 
-  void previousStackImage(PostModel post) {
-    final count = post.images.length;
-    post.stackIndex.value = (post.stackIndex.value - 1 + count) % count;
-  }
-
   void addComment(PostModel post) {
     final text = commentController.text.trim();
     if (text.isEmpty) return;
