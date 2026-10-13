@@ -23,7 +23,8 @@ class SignInController extends GetxController {
 
     isLoading.value = true;
     try {
-      // TODO: call the sign in API.
+      // TODO: call the sign in API and save the token.
+      Get.offAllNamed(AppRoute.getMainNavScreen());
     } finally {
       isLoading.value = false;
     }

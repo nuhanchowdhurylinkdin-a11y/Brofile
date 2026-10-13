@@ -75,6 +75,8 @@ flutter:
     - assets/onboarding_image/
     - assets/auth_image/
     - assets/auth_icon/
+    - assets/home_image/
+    - assets/home_icon/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

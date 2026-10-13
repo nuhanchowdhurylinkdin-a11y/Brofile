@@ -13,6 +13,10 @@ class SplashController extends GetxController {
 
   Future<void> _navigateNext() async {
     await Future.delayed(splashDuration);
+    if (StorageService.hasToken()) {
+      Get.offAllNamed(AppRoute.getMainNavScreen());
+      return;
+    }
     Get.offAllNamed(
       StorageService.isOnboardingCompleted
           ? AppRoute.getSignInScreen()

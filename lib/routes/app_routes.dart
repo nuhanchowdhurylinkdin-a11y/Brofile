@@ -10,6 +10,9 @@ import '../features/authentication/presentation/screens/otp_screen.dart';
 import '../features/authentication/presentation/screens/reset_password_screen.dart';
 import '../features/authentication/presentation/screens/sign_in_screen.dart';
 import '../features/authentication/presentation/screens/sign_up_screen.dart';
+import '../features/home/controllers/home_controller.dart';
+import '../features/main_nav/controllers/main_nav_controller.dart';
+import '../features/main_nav/presentation/screens/main_nav_screen.dart';
 import '../features/onboarding/controllers/onboarding_controller.dart';
 import '../features/onboarding/presentation/screens/onboarding_screen.dart';
 import '../features/splash/controllers/splash_controller.dart';
@@ -23,10 +26,12 @@ class AppRoute {
   static String forgotPasswordScreen = "/forgotPasswordScreen";
   static String otpScreen = "/otpScreen";
   static String resetPasswordScreen = "/resetPasswordScreen";
+  static String mainNavScreen = "/mainNavScreen";
 
   static String getSplashScreen() => splashScreen;
   static String getOnboardingScreen() => onboardingScreen;
   static String getSignInScreen() => signInScreen;
+  static String getMainNavScreen() => mainNavScreen;
 
   static List<GetPage> routes = [
     GetPage(
@@ -65,6 +70,14 @@ class AppRoute {
       name: resetPasswordScreen,
       page: () => const ResetPasswordScreen(),
       binding: BindingsBuilder(() => Get.lazyPut(() => ResetPasswordController())),
+    ),
+    GetPage(
+      name: mainNavScreen,
+      page: () => const MainNavScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => MainNavController());
+        Get.lazyPut(() => HomeController());
+      }),
     ),
   ];
 }

@@ -45,6 +45,31 @@ class AppColors {
   // Indicator Colors
   static const Color indicatorInactive = Color(0xFFE9EAEB);
 
+  // Neutral scale
+  static const Color neutral100 = Color(0xFFF5F5F5);
+  static const Color neutral200 = Color(0xFFE9EAEB);
+  static const Color neutral400 = Color(0xFFA4A7AE);
+  static const Color neutral500 = Color(0xFF717680);
+  static const Color neutral600 = Color(0xFF535862);
+  static const Color neutral700 = Color(0xFF414651);
+
+  // Home
+  static const Color navActive = Color(0xFF0F6B43);
+  static const Color orange = Color(0xFFFC6000);
+  static const Color orangeLight = Color(0xFFFFF1EA);
+  static const Color online = Color(0xFF3CCB7F);
+  static const Color followBlue = Color(0xFF1570EF);
+  static const Color surface = Color(0xFFF9F9F9);
+  static const Color cardBorder = Color(0xFFEFEFEF);
+  static const Color infoBorder = Color(0xFFF4F4F4);
+  static const Color avatarNeutral = Color(0xFFE0E0E0);
+  static const Color tagBlueBg = Color(0xFFB9E6FE);
+  static const Color tagBlueText = Color(0xFF0086C9);
+  static const Color primaryContainer = Color(0xFFA6F2D1);
+  static const Color headerBackground = Color(0xCFFFFFFF); // white at 81%
+  static const Color navBackground = Color(0xDBFFFFFF); // white at 86%
+  static const Color albumShade = Color(0xE6000C07);
+
   // Background Colors
   static const Color backgroundLight = Color(0xFFF9FAFB); // Light neutral for clean look
   static const Color backgroundDark = Color(0xFF121212); // Dark background for contrast in dark mode
