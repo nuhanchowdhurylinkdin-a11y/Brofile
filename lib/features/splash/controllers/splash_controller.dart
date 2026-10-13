@@ -15,7 +15,7 @@ class SplashController extends GetxController {
     await Future.delayed(splashDuration);
     Get.offAllNamed(
       StorageService.isOnboardingCompleted
-          ? AppRoute.getLoginScreen()
+          ? AppRoute.getSignInScreen()
           : AppRoute.getOnboardingScreen(),
     );
   }

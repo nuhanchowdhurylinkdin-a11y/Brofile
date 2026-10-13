@@ -17,4 +17,11 @@ class ImagePath{
   static const String onboarding2Card = '$_onboarding/onboarding_img_2.1.svg';
   static const String onboarding3 = '$_onboarding/onboarding_img_3.svg';
   static const String onboardingSpacer = '$_onboarding/onboarding_spacer.png';
+
+  // Auth
+  static const String _auth = 'assets/auth_image';
+  static const String wave = '$_auth/wave.png';
+  static const String claps = '$_auth/claps.png';
+  static const String envelope = '$_auth/envelope.png';
+  static const String lock = '$_auth/lock.png';
 }

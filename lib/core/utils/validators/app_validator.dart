@@ -16,6 +16,20 @@ class AppValidator {
     return null;
   }
 
+  static String? validateEmailOrPhone(String? value) {
+    final input = value?.trim() ?? '';
+    if (input.isEmpty) {
+      return 'Email or phone number is required.';
+    }
+    if (input.contains('@')) {
+      return validateEmail(input);
+    }
+    if (!RegExp(r'^\+?\d{6,15}$').hasMatch(input)) {
+      return 'Invalid email address or phone number.';
+    }
+    return null;
+  }
+
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
       return 'Password is required.';

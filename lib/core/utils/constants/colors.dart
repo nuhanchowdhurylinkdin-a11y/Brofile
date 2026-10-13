@@ -24,6 +24,24 @@ class AppColors {
   static const Color textWhite = Colors.white;
   static const Color textGray800 = Color(0xFF252B37);
 
+  // Gray scale
+  static const Color gray900 = Color(0xFF262626);
+  static const Color gray800 = Color(0xFF3B4054);
+  static const Color gray700 = Color(0xFF61677D);
+  static const Color gray600 = Color(0xFF7C8BA0);
+  static const Color gray100 = Color(0xFFEAEFF5);
+  static const Color gray50 = Color(0xFFF5F9FE);
+
+  // Link Colors
+  static const Color link = Color(0xFF3461FD);
+  static const Color linkSecondary = Color(0xFF2970FF);
+
+  // Input / Surface Colors
+  static const Color primary100 = Color(0xFFD6DFFF);
+  static const Color inputFill = Color(0x0D0D5E3C); // primary at 5%
+  static const Color stepInactive = Color(0x330D5E3C); // primary at 20%
+  static const Color highlight = Color(0xFFFFEDB6);
+
   // Indicator Colors
   static const Color indicatorInactive = Color(0xFFE9EAEB);
 

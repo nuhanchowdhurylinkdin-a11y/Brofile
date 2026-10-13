@@ -27,7 +27,7 @@ class OnboardingController extends GetxController {
 
   Future<void> completeOnboarding() async {
     await StorageService.setOnboardingCompleted();
-    Get.offAllNamed(AppRoute.getLoginScreen());
+    Get.offAllNamed(AppRoute.getSignInScreen());
   }
 
   @override
