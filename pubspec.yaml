@@ -45,6 +45,7 @@ dependencies:
   web_socket_channel: ^3.0.3
   persistent_bottom_nav_bar_v2: ^6.5.0
   flutter_otp_text_field: ^1.5.1+1
+  flutter_svg: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +57,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  flutter_native_splash: ^2.4.8
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -67,6 +69,10 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/splash_icon/splash_icon.svg
+    - assets/onboarding_image/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

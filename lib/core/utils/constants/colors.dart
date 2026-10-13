@@ -4,7 +4,7 @@ class AppColors {
   AppColors._();
 
   // Brand Colors
-  static const Color primary = Color(0xFF1E3A5F); // Darker primary for a more professional look
+  static const Color primary = Color(0xFF0D5E3C); // Brofile brand green
   static const Color secondary = Color(0xFFFEC601); // Bright yellow for highlights and accents
   static const Color accent = Color(0xFF89A7FF); // Softer blue for a modern touch
 
@@ -22,6 +22,10 @@ class AppColors {
   static const Color textPrimary = Color(0xFF212121); // Darker shade for better readability
   static const Color textSecondary = Color(0xFF757575); // Neutral grey for secondary text
   static const Color textWhite = Colors.white;
+  static const Color textGray800 = Color(0xFF252B37);
+
+  // Indicator Colors
+  static const Color indicatorInactive = Color(0xFFE9EAEB);
 
   // Background Colors
   static const Color backgroundLight = Color(0xFFF9FAFB); // Light neutral for clean look
