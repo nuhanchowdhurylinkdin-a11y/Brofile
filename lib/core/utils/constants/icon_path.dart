@@ -36,8 +36,60 @@ class IconPath{
   static const String navHome = '$_home/nav_home.svg';
   static const String navHomeFilled = '$_home/nav_home_filled.svg';
   static const String navCommunity = '$_home/nav_community.svg';
+  static const String navCommunityFilled = '$_home/nav_community_filled.svg';
   static const String navPleasure = '$_home/nav_pleasure.svg';
+  static const String navPleasureFilled = '$_home/nav_pleasure_filled.svg';
   static const String navDiscover = '$_home/nav_discover.svg';
+  static const String navDiscoverFilled = '$_home/nav_discover_filled.svg';
+
+  // Shared tab chrome
+  static const String _common = 'assets/common_icon';
+  static const String addSquare = '$_common/add_square.svg';
+  static const String searchField = '$_common/search.svg';
+  static const String filter = '$_common/filter.svg';
+
+  // Community
+  static const String _community = 'assets/community_icon';
+  static const String interestCooking = '$_community/cooking.svg';
+  static const String interestBaking = '$_community/baking.svg';
+  static const String interestCoffee = '$_community/coffee.svg';
+  static const String interestTea = '$_community/tea.svg';
+  static const String interestFashion = '$_community/fashion.svg';
+  static const String interestGardening = '$_community/gardening.svg';
+  static const String interestInterior = '$_community/interior.svg';
+  static const String interestGrooming = '$_community/grooming.svg';
+  static const String lifestyle = '$_community/lifestyle.svg';
+  static const String viewDetailsArrow = '$_community/arrow_up_right.svg';
+
+  // Pleasure
+  static const String _pleasure = 'assets/pleasure_icon';
+  static const String activityLocation = '$_pleasure/location.svg';
+  static const String activityDistance = '$_pleasure/location_active.svg';
+  static const String pleasureBack = '$_pleasure/arrow_left.svg';
+  static const String pleasureClose = '$_pleasure/close.svg';
+  static const String detailsClock = '$_pleasure/details_clock.svg';
+  static const String detailsPin = '$_pleasure/pin.svg';
+  static const String imInStar = '$_pleasure/im_in_star.svg';
+  static const String chevronDown = '$_pleasure/chevron_down.svg';
+  static const String addPhotoCamera = '$_pleasure/camera.svg';
+
+  // Discover
+  static const String _discover = 'assets/discover_icon';
+  static const String typeBusiness = '$_discover/type_business.svg';
+  static const String typeProducts = '$_discover/type_products.svg';
+  static const String typeServices = '$_discover/type_services.svg';
+  static const String typeEvents = '$_discover/type_events.svg';
+  static const String typeRecycle = '$_discover/type_recycle.svg';
+  static const String headerBusiness = '$_discover/header_business.svg';
+  static const String headerProducts = '$_discover/header_products.svg';
+  static const String headerServices = '$_discover/header_services.svg';
+  static const String headerEvents = '$_discover/header_events.svg';
+  static const String headerRecycle = '$_discover/header_recycle.svg';
+  static const String favoriteOutline = '$_discover/favorite.svg';
+  static const String pinGreen = '$_discover/pin_green.svg';
+  static const String pinWhite = '$_discover/pin_white.svg';
+  static const String peakfitBadge = '$_discover/peakfit_badge.svg';
+  static const String trash = '$_discover/trash.svg';
 
   // Comments
   static const String _comment = 'assets/comment_icon';

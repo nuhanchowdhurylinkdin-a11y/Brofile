@@ -86,7 +86,11 @@ class _FeedEntryView extends GetView<HomeController> {
     return switch (entry) {
       PostEntry(:final post) => PostCard(key: ValueKey(post.id), post: post),
       SectionEntry(:final section) => switch (section) {
-          HomeSection.categories => const CategoryChips(),
+          HomeSection.categories => CategoryChips(
+              labels: HomeController.categories,
+              selected: controller.selectedCategory,
+              onSelected: controller.selectCategory,
+            ),
           HomeSection.people => const PeopleYouMayKnow(),
           HomeSection.friends => const FamilyFriendsSection(),
           HomeSection.trending => const TrendingSection(),

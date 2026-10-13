@@ -9,7 +9,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class HomeHeader extends GetView<HomeController> {
-  const HomeHeader({super.key});
+  const HomeHeader({super.key, this.onLogoTap});
+
+  /// Defaults to scrolling the home feed to the top.
+  final VoidCallback? onLogoTap;
 
   /// Height below the status bar.
   static double get contentHeight => 54.w;
@@ -29,7 +32,7 @@ class HomeHeader extends GetView<HomeController> {
           child: Row(
             children: [
               GestureDetector(
-                onTap: controller.scrollToTop,
+                onTap: onLogoTap ?? controller.scrollToTop,
                 child: SvgPicture.asset(
                   IconPath.brofileLogo,
                   width: 132.w,

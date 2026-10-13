@@ -108,35 +108,42 @@ class _TrendingCard extends StatelessWidget {
           Expanded(
             child: Container(
               padding: EdgeInsets.all(11.w),
+              clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
                 border: Border.all(color: AppColors.infoBorder),
                 borderRadius: BorderRadius.circular(8.r),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  FittedBox(
-                    fit: BoxFit.scaleDown,
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      trip.title,
-                      style: manrope(16, weight: FontWeight.w700, lineHeight: 24),
-                      maxLines: 1,
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          trip.title,
+                          style: manrope(16, weight: FontWeight.w700, lineHeight: 24),
+                          maxLines: 1,
+                        ),
+                      ),
+                      SizedBox(height: 4.w),
+                      Text(
+                        trip.dates,
+                        style: manrope(
+                          14,
+                          weight: FontWeight.w600,
+                          color: AppColors.neutral500,
+                          lineHeight: 20,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ),
-                  SizedBox(height: 4.w),
-                  Text(
-                    trip.dates,
-                    style: manrope(
-                      14,
-                      weight: FontWeight.w600,
-                      color: AppColors.neutral500,
-                      lineHeight: 20,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(height: 8.w),
                   Row(
                     children: [
                       SvgPicture.asset(IconPath.location, width: 18.w, height: 18.w),
@@ -149,7 +156,6 @@ class _TrendingCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 12.w),
                   Row(
                     children: [
                       Text(

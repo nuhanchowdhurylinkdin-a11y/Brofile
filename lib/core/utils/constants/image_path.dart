@@ -81,4 +81,85 @@ class ImagePath{
   static const String commenterAlex = '$_comment/commenter_alex.jpg';
   static const String commenterFlora = '$_comment/commenter_flora.jpg';
   static const String commenterRyan = '$_comment/commenter_ryan.jpg';
+
+  // People shared across tabs
+  static const String _people = 'assets/common_image';
+  static const String person1 = '$_people/avatar_1.jpg';
+  static const String person2 = '$_people/avatar_2.jpg';
+  static const String person3 = '$_people/avatar_3.jpg';
+  static const String person4 = '$_people/avatar_4.jpg';
+  static const String person5 = '$_people/avatar_5.jpg';
+  static const String person6 = '$_people/avatar_6.jpg';
+  static const String person7 = '$_people/avatar_7.jpg';
+  static const String person8 = '$_people/avatar_8.jpg';
+  static const String person9 = '$_people/avatar_9.jpg';
+  static const String person10 = '$_people/avatar_10.jpg';
+
+  // Community
+  static const String _community = 'assets/community_image';
+  static const String featuredCoffee = '$_community/featured_coffee.jpg';
+  static const String myBaristaClub = '$_community/my_barista_club.jpg';
+  static const String myStyleAndYou = '$_community/my_style_and_you.jpg';
+  static const String trendingTeaCulture = '$_community/trending_tea_culture.jpg';
+  static const String trendingDiyCrafts = '$_community/trending_diy_crafts.jpg';
+  static const String trendingPlantParents = '$_community/trending_plant_parents.jpg';
+  static const String newMinimalLiving = '$_community/new_minimal_living.jpg';
+  static const String newCoffeeRoasters = '$_community/new_coffee_roasters.jpg';
+  static const String newArtDoodles = '$_community/new_art_doodles.jpg';
+  static const String nearDiyCrafts = '$_community/near_diy_crafts.jpg';
+
+  // Pleasure
+  static const String _pleasure = 'assets/pleasure_image';
+  static const String activityFishing = '$_pleasure/activity_fishing.jpg';
+  static const String activityCoffee = '$_pleasure/activity_coffee.jpg';
+  static const String activitySajekRide = '$_pleasure/activity_sajek.jpg';
+  static const String addPhotoBackground = '$_pleasure/add_photo_bg.jpg';
+
+  // Discover
+  static const String _discover = 'assets/discover_image';
+  static const String oceanGrill = '$_discover/ocean_grill.jpg';
+  static const String oceanLogo = '$_discover/ocean_logo.jpg';
+  static const String fitzone = '$_discover/fitzone.jpg';
+  static const String fitzoneLogo = '$_discover/fitzone_logo.jpg';
+  static const String greenleaf = '$_discover/greenleaf.jpg';
+  static const String greenleafLogo = '$_discover/greenleaf_logo.jpg';
+  static const String greenCafe = '$_discover/green_cafe.jpg';
+  static const String greenCafeLogo = '$_discover/green_cafe_logo.jpg';
+  static const String peakfit = '$_discover/peakfit.jpg';
+  static const String featuredPeakfit = '$_discover/featured_peakfit.jpg';
+  static const String cycleChart = '$_discover/cycle_chart.jpg';
+  static const String artisanCoffee = '$_discover/artisan_coffee.jpg';
+  static const String artisanAvatar = '$_discover/artisan_avatar.jpg';
+  static const String cycleCraft = '$_discover/cycle_craft.jpg';
+  static const String blooms = '$_discover/blooms.jpg';
+  static const String northBow = '$_discover/north_bow.jpg';
+  static const String northBrewCover = '$_discover/north_brew_cover.jpg';
+  static const String northBrewLogo = '$_discover/north_brew_logo.jpg';
+  static const String peakPerformance = '$_discover/peak_performance.jpg';
+  static const String williamHike1 = '$_discover/william_hike_1.jpg';
+  static const String williamHike2 = '$_discover/william_hike_2.jpg';
+  static const String eventKayak = '$_discover/event_kayak.jpg';
+  static const String eventMarket = '$_discover/event_market.jpg';
+  static const String eventCoffee = '$_discover/event_coffee.jpg';
+  static const String eventSalsa = '$_discover/event_salsa.jpg';
+  static const String eventHike = '$_discover/event_hike.jpg';
+  static const String recSofa = '$_discover/rec_sofa.jpg';
+  static const String recCamera = '$_discover/rec_camera.jpg';
+  static const String recPhone = '$_discover/rec_phone.jpg';
+  static const String recChair = '$_discover/rec_chair.jpg';
+  static const String recSamsung = '$_discover/rec_samsung.jpg';
+  static const String recTable = '$_discover/rec_table.jpg';
+  static const String recLaptop = '$_discover/rec_laptop.jpg';
+  static const String recLamp = '$_discover/rec_lamp.jpg';
+  static const String sellerShara = '$_discover/seller_shara.jpg';
+  static const String svcPersonalYoga = '$_discover/svc_personal_yoga.jpg';
+  static const String svcGroupYoga = '$_discover/svc_group_yoga.jpg';
+  static const String svcPlumbing = '$_discover/svc_plumbing.jpg';
+  static const String svcElectrical = '$_discover/svc_electrical.jpg';
+  static const String svcBeauty = '$_discover/svc_beauty.jpg';
+  static const String svcWellness = '$_discover/svc_wellness.jpg';
+  static const String svcLanguage = '$_discover/svc_language.jpg';
+  static const String svcCatering = '$_discover/svc_catering.jpg';
+  static const String svcSalon = '$_discover/svc_salon.jpg';
+  static const String svcCleaning = '$_discover/svc_cleaning.jpg';
 }

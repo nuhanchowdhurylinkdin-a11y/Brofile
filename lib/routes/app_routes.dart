@@ -10,8 +10,19 @@ import '../features/authentication/presentation/screens/otp_screen.dart';
 import '../features/authentication/presentation/screens/reset_password_screen.dart';
 import '../features/authentication/presentation/screens/sign_in_screen.dart';
 import '../features/authentication/presentation/screens/sign_up_screen.dart';
+import '../features/community/controllers/community_controller.dart';
+import '../features/discover/controllers/create_product_controller.dart';
+import '../features/discover/controllers/discover_controller.dart';
+import '../features/discover/controllers/recycle_product_details_controller.dart';
+import '../features/discover/presentation/screens/create_product_screen.dart';
+import '../features/discover/presentation/screens/recycle_product_details_screen.dart';
 import '../features/home/controllers/home_controller.dart';
 import '../features/main_nav/controllers/main_nav_controller.dart';
+import '../features/pleasure/controllers/create_pleasure_controller.dart';
+import '../features/pleasure/controllers/pleasure_controller.dart';
+import '../features/pleasure/controllers/pleasure_details_controller.dart';
+import '../features/pleasure/presentation/screens/create_pleasure_screen.dart';
+import '../features/pleasure/presentation/screens/pleasure_details_screen.dart';
 import '../features/main_nav/presentation/screens/main_nav_screen.dart';
 import '../features/onboarding/controllers/onboarding_controller.dart';
 import '../features/onboarding/presentation/screens/onboarding_screen.dart';
@@ -27,6 +38,10 @@ class AppRoute {
   static String otpScreen = "/otpScreen";
   static String resetPasswordScreen = "/resetPasswordScreen";
   static String mainNavScreen = "/mainNavScreen";
+  static String pleasureDetailsScreen = "/pleasureDetailsScreen";
+  static String createPleasureScreen = "/createPleasureScreen";
+  static String createProductScreen = "/createProductScreen";
+  static String recycleProductDetailsScreen = "/recycleProductDetailsScreen";
 
   static String getSplashScreen() => splashScreen;
   static String getOnboardingScreen() => onboardingScreen;
@@ -77,7 +92,38 @@ class AppRoute {
       binding: BindingsBuilder(() {
         Get.lazyPut(() => MainNavController());
         Get.lazyPut(() => HomeController());
+        Get.lazyPut(() => CommunityController());
+        Get.lazyPut(() => PleasureController());
+        Get.lazyPut(() => DiscoverController());
       }),
+    ),
+    GetPage(
+      name: pleasureDetailsScreen,
+      page: () => const PleasureDetailsScreen(),
+      binding: BindingsBuilder(
+        () => Get.lazyPut(() => PleasureDetailsController()),
+      ),
+    ),
+    GetPage(
+      name: createPleasureScreen,
+      page: () => const CreatePleasureScreen(),
+      binding: BindingsBuilder(
+        () => Get.lazyPut(() => CreatePleasureController()),
+      ),
+    ),
+    GetPage(
+      name: createProductScreen,
+      page: () => const CreateProductScreen(),
+      binding: BindingsBuilder(
+        () => Get.lazyPut(() => CreateProductController()),
+      ),
+    ),
+    GetPage(
+      name: recycleProductDetailsScreen,
+      page: () => const RecycleProductDetailsScreen(),
+      binding: BindingsBuilder(
+        () => Get.lazyPut(() => RecycleProductDetailsController()),
+      ),
     ),
   ];
 }

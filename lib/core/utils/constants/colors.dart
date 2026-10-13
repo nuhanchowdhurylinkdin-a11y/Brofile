@@ -76,6 +76,24 @@ class AppColors {
   static const Color commentInputBorder = Color(0xFFECECED);
   static const Color emojiIcon = Color(0xFF94979C);
 
+  // Community and Pleasure
+  static const Color brandMuted = Color(0xFF2F5D4B);
+  static const Color joined = Color(0xFF17B26A);
+  static const Color lifestyleTag = Color(0xFFE478FA);
+  static const Color blackAlpha40 = Color(0x66000000);
+  static const Color buttonShadow = Color(0x0D0A0D12);
+  static const Color headerGreen = Color(0xFF099250);
+  static const Color headerBlue = Color(0xFF2970FF);
+  static const Color headerOrange = Color(0xFFFF692E);
+  static const Color headerViolet = Color(0xFF875BF7);
+  static const Color typeChipBorder = Color(0xFFEFEEEE);
+  static const Color openNowScrim = Color(0x80000000);
+  static const Color badgeGold = Color(0xFFFEDF89);
+  static const Color logoRingPeach = Color(0xFFFEBAA3);
+  static const Color warning100 = Color(0xFFFEF0C7);
+  static const Color sellChipBg = Color(0xFFDCFAE6);
+  static const Color sellChipText = Color(0xFF067647);
+
   // Background Colors
   static const Color backgroundLight = Color(0xFFF9FAFB); // Light neutral for clean look
   static const Color backgroundDark = Color(0xFF121212); // Dark background for contrast in dark mode

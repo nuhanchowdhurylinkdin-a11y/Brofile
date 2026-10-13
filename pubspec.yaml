@@ -80,6 +80,14 @@ flutter:
     - assets/home_icon/
     - assets/comment_image/
     - assets/comment_icon/
+    - assets/common_icon/
+    - assets/common_image/
+    - assets/community_icon/
+    - assets/community_image/
+    - assets/pleasure_icon/
+    - assets/pleasure_image/
+    - assets/discover_icon/
+    - assets/discover_image/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

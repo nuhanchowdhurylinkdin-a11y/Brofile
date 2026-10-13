@@ -16,9 +16,12 @@ class AppBottomNavBar extends GetView<MainNavController> {
 
   static const _items = [
     _NavItem(NavTab.home, AppText.navHome, IconPath.navHome, IconPath.navHomeFilled, 24.84, 24.4),
-    _NavItem(NavTab.community, AppText.navCommunity, IconPath.navCommunity, null, 28, 28),
-    _NavItem(NavTab.pleasure, AppText.navPleasure, IconPath.navPleasure, null, 23.67, 24.83),
-    _NavItem(NavTab.discover, AppText.navDiscover, IconPath.navDiscover, null, 28, 28),
+    _NavItem(NavTab.community, AppText.navCommunity, IconPath.navCommunity,
+        IconPath.navCommunityFilled, 28, 28),
+    _NavItem(NavTab.pleasure, AppText.navPleasure, IconPath.navPleasure,
+        IconPath.navPleasureFilled, 23.67, 24.83),
+    _NavItem(NavTab.discover, AppText.navDiscover, IconPath.navDiscover,
+        IconPath.navDiscoverFilled, 28, 28),
     _NavItem(NavTab.profile, AppText.navProfile, null, null, 28, 28),
   ];
 

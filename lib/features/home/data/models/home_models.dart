@@ -170,6 +170,14 @@ class ProductModel {
     this.subtitle,
     this.rating,
     this.condition,
+    this.category,
+    this.tag,
+    this.recycleType,
+    this.details,
+    this.usingFor,
+    this.sellerName,
+    this.sellerAvatar,
+    this.memberSince,
   });
 
   final String name;
@@ -178,6 +186,14 @@ class ProductModel {
   final String price;
   final double? rating;
   final ProductCondition? condition;
+  final String? category;
+  final String? tag;
+  final String? recycleType;
+  final String? details;
+  final String? usingFor;
+  final String? sellerName;
+  final String? sellerAvatar;
+  final String? memberSince;
   final isFavorite = false.obs;
 }
 
@@ -198,6 +214,7 @@ class EventModel {
     required this.image,
     required this.attendees,
     required this.extraAttendees,
+    this.category = '',
   });
 
   final String day;
@@ -208,6 +225,7 @@ class EventModel {
   final String image;
   final List<String> attendees;
   final int extraAttendees;
+  final String category;
   final isInterested = false.obs;
 }
 
