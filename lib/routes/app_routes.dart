@@ -19,7 +19,9 @@ class AppRoute {
     GetPage(
       name: splashScreen,
       page: () => const SplashScreen(),
-      binding: BindingsBuilder(() => Get.lazyPut(() => SplashController())),
+      binding: BindingsBuilder(() {
+        Get.put(SplashController());
+      }),
     ),
     GetPage(
       name: onboardingScreen,
