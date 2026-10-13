@@ -38,4 +38,11 @@ class IconPath{
   static const String navCommunity = '$_home/nav_community.svg';
   static const String navPleasure = '$_home/nav_pleasure.svg';
   static const String navDiscover = '$_home/nav_discover.svg';
+
+  // Comments
+  static const String _comment = 'assets/comment_icon';
+  static const String commentImage = '$_comment/image.svg';
+  static const String commentEmoji = '$_comment/emoji.svg';
+  static const String commentSend = '$_comment/send.svg';
+  static const String commentSendActive = '$_comment/send_active.svg';
 }

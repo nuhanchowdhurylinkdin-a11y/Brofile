@@ -35,13 +35,6 @@ void showPostMenu(PostModel post) {
   );
 }
 
-void showCommentsSheet(PostModel post) {
-  Get.bottomSheet(
-    _CommentsSheet(post: post),
-    isScrollControlled: true,
-  );
-}
-
 class _SheetContainer extends StatelessWidget {
   const _SheetContainer({required this.child});
 
@@ -71,119 +64,6 @@ class _SheetContainer extends StatelessWidget {
             SizedBox(height: 8.w),
             child,
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class _CommentsSheet extends GetView<HomeController> {
-  const _CommentsSheet({required this.post});
-
-  final PostModel post;
-
-  @override
-  Widget build(BuildContext context) {
-    final keyboardInset = MediaQuery.viewInsetsOf(context).bottom;
-
-    return Padding(
-      padding: EdgeInsets.only(bottom: keyboardInset),
-      child: _SheetContainer(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: 0.6.sh),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.w),
-                child: Obx(
-                  () => Text(
-                    '${AppText.comments} (${post.commentCount})',
-                    style: manrope(16, weight: FontWeight.w700, lineHeight: 24),
-                  ),
-                ),
-              ),
-              Flexible(
-                child: Obx(() {
-                  if (post.comments.isEmpty) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.w),
-                      child: Text(
-                        AppText.noCommentsYet,
-                        style: manrope(14, color: AppColors.neutral500, lineHeight: 20),
-                      ),
-                    );
-                  }
-                  return ListView.separated(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.w),
-                    itemCount: post.comments.length,
-                    separatorBuilder: (_, _) => SizedBox(height: 12.w),
-                    itemBuilder: (_, index) {
-                      final comment = post.comments[index];
-                      return Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: '${comment.author}  ',
-                              style: manrope(14, weight: FontWeight.w700),
-                            ),
-                            TextSpan(
-                              text: comment.text,
-                              style: manrope(14, color: AppColors.neutral600),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  );
-                }),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(16.w, 8.w, 8.w, 12.w),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: controller.commentController,
-                        textInputAction: TextInputAction.send,
-                        onSubmitted: (_) => controller.addComment(post),
-                        style: manrope(14),
-                        decoration: InputDecoration(
-                          hintText: AppText.writeComment,
-                          hintStyle: manrope(14, color: AppColors.neutral400),
-                          filled: true,
-                          fillColor: AppColors.surface,
-                          isDense: true,
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: 16.w,
-                            vertical: 12.w,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(24.r),
-                            borderSide: BorderSide.none,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(24.r),
-                            borderSide: BorderSide.none,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(24.r),
-                            borderSide: const BorderSide(color: AppColors.primary),
-                          ),
-                        ),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () => controller.addComment(post),
-                      icon: Icon(Icons.send_rounded, color: AppColors.primary, size: 24.r),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );

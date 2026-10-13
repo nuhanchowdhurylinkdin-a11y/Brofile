@@ -48,6 +48,7 @@ class AppColors {
   // Neutral scale
   static const Color neutral100 = Color(0xFFF5F5F5);
   static const Color neutral200 = Color(0xFFE9EAEB);
+  static const Color neutral300 = Color(0xFFD5D7DA);
   static const Color neutral400 = Color(0xFFA4A7AE);
   static const Color neutral500 = Color(0xFF717680);
   static const Color neutral600 = Color(0xFF535862);
@@ -69,6 +70,11 @@ class AppColors {
   static const Color headerBackground = Color(0xCFFFFFFF); // white at 81%
   static const Color navBackground = Color(0xDBFFFFFF); // white at 86%
   static const Color albumShade = Color(0xE6000C07);
+
+  // Comments
+  static const Color sheetScrim = Color(0x29000000); // black at 16%
+  static const Color commentInputBorder = Color(0xFFECECED);
+  static const Color emojiIcon = Color(0xFF94979C);
 
   // Background Colors
   static const Color backgroundLight = Color(0xFFF9FAFB); // Light neutral for clean look

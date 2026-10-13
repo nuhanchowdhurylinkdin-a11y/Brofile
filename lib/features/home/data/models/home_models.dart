@@ -4,14 +4,50 @@ enum Reaction { none, like, dislike }
 
 enum PostLayout { single, double, stack }
 
-class PostComment {
-  PostComment({required this.author, required this.text});
-
-  final String author;
-  final String text;
+/// Anything that can be liked or disliked.
+abstract interface class Reactable {
+  RxInt get likes;
+  RxInt get dislikes;
+  Rx<Reaction> get reaction;
 }
 
-class PostModel {
+class CommentModel implements Reactable {
+  CommentModel({
+    required this.id,
+    required this.author,
+    required this.avatar,
+    required this.text,
+    this.timeAgo = '35m',
+    this.imagePath,
+    this.isOnline = true,
+    int likes = 0,
+    int dislikes = 0,
+    List<CommentModel> replies = const [],
+  })  : likes = likes.obs,
+        dislikes = dislikes.obs,
+        replies = replies.obs;
+
+  final String id;
+  final String author;
+  final String avatar;
+  final String text;
+  final String timeAgo;
+
+  /// Local path of a photo attached from the gallery.
+  final String? imagePath;
+  final bool isOnline;
+
+  @override
+  final RxInt likes;
+  @override
+  final RxInt dislikes;
+  @override
+  final reaction = Reaction.none.obs;
+  final RxList<CommentModel> replies;
+  final isExpanded = false.obs;
+}
+
+class PostModel implements Reactable {
   PostModel({
     required this.id,
     required this.author,
@@ -27,8 +63,10 @@ class PostModel {
     this.baseCommentCount = 0,
     this.isOnline = true,
     this.isCard = false,
+    List<CommentModel> comments = const [],
   })  : likes = likes.obs,
-        dislikes = dislikes.obs;
+        dislikes = dislikes.obs,
+        comments = comments.obs;
 
   final String id;
   final String author;
@@ -45,15 +83,21 @@ class PostModel {
   /// Posts drawn inside a bordered card (the stacked gallery posts).
   final bool isCard;
 
+  @override
   final RxInt likes;
+  @override
   final RxInt dislikes;
+  @override
   final reaction = Reaction.none.obs;
-  final comments = <PostComment>[].obs;
+  final RxList<CommentModel> comments;
+  final addedComments = 0.obs;
   final isExpanded = false.obs;
   final stackIndex = 0.obs;
 
   String get tag => '$category > $subcategory';
-  int get commentCount => baseCommentCount + comments.length;
+
+  /// Reads reactive state, so call it inside an `Obx`.
+  int get commentCount => baseCommentCount + addedComments.value;
 }
 
 class SuggestedPerson {

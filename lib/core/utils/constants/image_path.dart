@@ -75,4 +75,10 @@ class ImagePath{
   static const String attendee1 = '$_home/attendee_1.jpg';
   static const String attendee2 = '$_home/attendee_2.jpg';
   static const String attendee3 = '$_home/attendee_3.jpg';
+
+  // Comments
+  static const String _comment = 'assets/comment_image';
+  static const String commenterAlex = '$_comment/commenter_alex.jpg';
+  static const String commenterFlora = '$_comment/commenter_flora.jpg';
+  static const String commenterRyan = '$_comment/commenter_ryan.jpg';
 }

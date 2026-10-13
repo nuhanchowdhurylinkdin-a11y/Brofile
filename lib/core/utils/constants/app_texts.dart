@@ -94,7 +94,11 @@ class AppText{
   static const String noPostsInCategory = 'No posts in this category yet.';
   static const String comments = 'Comments';
   static const String noCommentsYet = 'No comments yet. Be the first to comment!';
-  static const String writeComment = 'Write a comment...';
+  static const String addComment = 'Add a comment...';
+  static const String addReply = 'Write a reply...';
+  static const String reply = 'Reply';
+  static const String replyingTo = 'Replying to';
+  static const String justNow = 'now';
   static const String hidePost = 'Hide post';
   static const String reportPost = 'Report post';
   static const String copyText = 'Copy text';

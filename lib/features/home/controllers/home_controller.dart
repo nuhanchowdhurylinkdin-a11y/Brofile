@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   final scrollController = ScrollController();
   final trendingPageController = PageController();
-  final commentController = TextEditingController();
 
   static const List<String> categories = [
     AppText.all,
@@ -199,7 +198,43 @@ class HomeController extends GetxController {
       dislikes: 24,
       baseCommentCount: 12,
       isCard: isCard,
+      comments: _mockComments('post_$id'),
     );
+  }
+
+  static const String _commentText =
+      'Conquered the rocky terrain of Zion National Park! '
+      'Unforgettable experience with stunning views.';
+
+  List<CommentModel> _mockComments(String postId) {
+    CommentModel comment(
+      String id,
+      String author,
+      String avatar, {
+      String text = _commentText,
+      List<CommentModel> replies = const [],
+    }) {
+      return CommentModel(
+        id: '${postId}_$id',
+        author: author,
+        avatar: avatar,
+        text: text,
+        likes: 120,
+        dislikes: 24,
+        replies: replies,
+      );
+    }
+
+    const ryan = 'Ryan Cooper';
+    return [
+      comment('c1', 'Alex Parker', ImagePath.commenterAlex, replies: [
+        comment('c1_r1', ryan, ImagePath.commenterRyan),
+      ]),
+      comment('c2', 'Flora Parker', ImagePath.commenterFlora, replies: [
+        comment('c2_r1', ryan, ImagePath.commenterRyan),
+        comment('c2_r2', ryan, ImagePath.commenterRyan, text: 'Thank you!'),
+      ]),
+    ];
   }
 
   List<FeedEntry> _buildFeed() {
@@ -267,32 +302,26 @@ class HomeController extends GetxController {
 
   void toggleFollow(SuggestedPerson person) => person.isFollowing.toggle();
 
-  void react(PostModel post, Reaction reaction) {
-    final previous = post.reaction.value;
-    if (previous == Reaction.like) post.likes.value--;
-    if (previous == Reaction.dislike) post.dislikes.value--;
+  /// Like and dislike are mutually exclusive; tapping the active one clears it.
+  void react(Reactable item, Reaction reaction) {
+    final previous = item.reaction.value;
+    if (previous == Reaction.like) item.likes.value--;
+    if (previous == Reaction.dislike) item.dislikes.value--;
 
     if (previous == reaction) {
-      post.reaction.value = Reaction.none;
+      item.reaction.value = Reaction.none;
       return;
     }
 
-    if (reaction == Reaction.like) post.likes.value++;
-    if (reaction == Reaction.dislike) post.dislikes.value++;
-    post.reaction.value = reaction;
+    if (reaction == Reaction.like) item.likes.value++;
+    if (reaction == Reaction.dislike) item.dislikes.value++;
+    item.reaction.value = reaction;
   }
 
   void toggleExpanded(PostModel post) => post.isExpanded.toggle();
 
   void nextStackImage(PostModel post) =>
       post.stackIndex.value = (post.stackIndex.value + 1) % post.images.length;
-
-  void addComment(PostModel post) {
-    final text = commentController.text.trim();
-    if (text.isEmpty) return;
-    post.comments.add(PostComment(author: AppText.you, text: text));
-    commentController.clear();
-  }
 
   void hidePost(PostModel post) {
     hiddenPostIds.add(post.id);
@@ -349,7 +378,6 @@ class HomeController extends GetxController {
   void onClose() {
     scrollController.dispose();
     trendingPageController.dispose();
-    commentController.dispose();
     super.onClose();
   }
 }

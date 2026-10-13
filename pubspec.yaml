@@ -46,6 +46,7 @@ dependencies:
   persistent_bottom_nav_bar_v2: ^6.5.0
   flutter_otp_text_field: ^1.5.1+1
   flutter_svg: ^2.3.0
+  image_picker: ^1.2.4
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +78,8 @@ flutter:
     - assets/auth_icon/
     - assets/home_image/
     - assets/home_icon/
+    - assets/comment_image/
+    - assets/comment_icon/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
