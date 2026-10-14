@@ -1,3 +1,4 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
@@ -21,15 +22,13 @@ class CreateBusinessPostScreen extends GetView<CreateBusinessPostController> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(
-              title: AppText.newBusinessPost,
-              onBack: controller.onBack,
-              onClose: Get.back,
-            ),
-            const Expanded(child: CreateBusinessPostForm()),
-          ],
+        body: HideOnScroll(
+          header: PleasureSubHeader(
+            title: AppText.newBusinessPost,
+            onBack: controller.onBack,
+            onClose: Get.back,
+          ),
+          body: const CreateBusinessPostForm(),
         ),
       ),
     );

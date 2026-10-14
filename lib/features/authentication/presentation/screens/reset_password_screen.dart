@@ -1,6 +1,5 @@
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
-import 'package:brofile/core/utils/constants/icon_path.dart';
 import 'package:brofile/core/utils/constants/image_path.dart';
 import 'package:brofile/features/authentication/controllers/reset_password_controller.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,6 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
   Widget build(BuildContext context) {
     return AuthScaffold(
       showBackButton: true,
-      backIcon: IconPath.arrowBackDark,
       children: [
         Padding(
           padding: authContentPadding,

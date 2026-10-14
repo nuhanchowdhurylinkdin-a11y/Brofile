@@ -1,4 +1,5 @@
 import 'package:brofile/core/common/widgets/avatar_group.dart';
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/helpers/profile_navigation.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
@@ -27,11 +28,9 @@ class CommunityDetailsScreen extends GetView<CommunityDetailsController> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(title: '', onBack: Get.back, showClose: false),
-            Expanded(
-              child: Obx(() {
+        body: HideOnScroll(
+          header: PleasureSubHeader(title: '', onBack: Get.back, showClose: false),
+          body: Obx(() {
                 final tab = controller.tab.value;
                 return ListView(
                   padding: EdgeInsets.only(top: 8.w, bottom: 32.w),
@@ -66,8 +65,6 @@ class CommunityDetailsScreen extends GetView<CommunityDetailsController> {
                   ],
                 );
               }),
-            ),
-          ],
         ),
       ),
     );

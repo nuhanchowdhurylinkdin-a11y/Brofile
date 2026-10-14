@@ -1,3 +1,4 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
@@ -21,11 +22,9 @@ class MyCommunitiesScreen extends GetView<CommunityController> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(title: AppText.myCommunities, onBack: Get.back),
-            Expanded(
-              child: ListView(
+        body: HideOnScroll(
+          header: PleasureSubHeader(title: AppText.myCommunities, onBack: Get.back),
+          body: ListView(
                 padding: EdgeInsets.fromLTRB(16.w, 8.w, 16.w, 32.w),
                 children: [
                   GestureDetector(
@@ -84,8 +83,6 @@ class MyCommunitiesScreen extends GetView<CommunityController> {
                   _JoinedGrid(communities: controller.profileJoined),
                 ],
               ),
-            ),
-          ],
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
@@ -19,15 +20,13 @@ class SettingsScreen extends GetView<SettingsController> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(
-              title: AppText.settings,
-              onBack: Get.back,
-              showClose: false,
-            ),
-            Expanded(
-              child: ListView(
+        body: HideOnScroll(
+          header: PleasureSubHeader(
+            title: AppText.settings,
+            onBack: Get.back,
+            showClose: false,
+          ),
+          body: ListView(
                 padding: EdgeInsets.fromLTRB(16.w, 8.w, 16.w, 32.w),
                 children: [
                   _GroupTitle(AppText.account),
@@ -126,8 +125,6 @@ class SettingsScreen extends GetView<SettingsController> {
                   ),
                 ],
               ),
-            ),
-          ],
         ),
       ),
     );

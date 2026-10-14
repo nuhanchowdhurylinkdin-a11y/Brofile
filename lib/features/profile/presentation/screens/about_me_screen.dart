@@ -1,3 +1,4 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
@@ -22,11 +23,9 @@ class AboutMeScreen extends GetView<EditAboutController> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            const ProfileAboutHeader(),
-            Expanded(
-              child: ListView(
+        body: HideOnScroll(
+          header: const ProfileAboutHeader(),
+          body: ListView(
                 keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                 padding: EdgeInsets.fromLTRB(16.w, 16.w, 16.w, 32.w),
                 children: [
@@ -263,8 +262,6 @@ class AboutMeScreen extends GetView<EditAboutController> {
                   ),
                 ],
               ),
-            ),
-          ],
         ),
       ),
     );

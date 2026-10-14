@@ -1,3 +1,4 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
@@ -23,11 +24,9 @@ class AspirationsScreen extends GetView<AspirationsController> {
         backgroundColor: AppColors.surface,
         body: Stack(
           children: [
-            Column(
-              children: [
-                PleasureSubHeader(title: AppText.aspirations, onBack: Get.back),
-                Expanded(
-                  child: Obx(() {
+            HideOnScroll(
+              header: PleasureSubHeader(title: AppText.aspirations, onBack: Get.back),
+              body: Obx(() {
                     final list = controller.visible;
                     return ListView(
                       padding: EdgeInsets.fromLTRB(16.w, 8.w, 16.w, 32.w),
@@ -71,8 +70,6 @@ class AspirationsScreen extends GetView<AspirationsController> {
                       ],
                     );
                   }),
-                ),
-              ],
             ),
             const _AspirationDetailsOverlay(),
           ],
