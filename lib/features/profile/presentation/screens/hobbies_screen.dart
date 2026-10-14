@@ -1,5 +1,7 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
+import 'package:brofile/core/utils/helpers/app_platform.dart';
 import 'package:brofile/features/pleasure/presentation/widgets/pleasure_sub_header.dart';
 import 'package:brofile/features/profile/controllers/profile_controller.dart';
 import 'package:brofile/features/profile/presentation/widgets/profile_hobbies.dart';
@@ -17,25 +19,20 @@ class HobbiesScreen extends GetView<ProfileController> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(
-              title: AppText.myHobbies,
-              onBack: controller.closeHobbies,
+        body: HideOnScroll(
+          header: PleasureSubHeader(
+            title: AppText.myHobbies,
+            onBack: controller.closeHobbies,
+          ),
+          body: AppPlatform.pullToRefresh(
+            onRefresh: controller.refreshProfile,
+            child: ListView(
+              controller: controller.hobbiesScrollController,
+              physics: const AlwaysScrollableScrollPhysics(),
+              padding: EdgeInsets.fromLTRB(0, 20.w, 0, 24.w),
+              children: const [ProfileHobbiesBody()],
             ),
-            Expanded(
-              child: RefreshIndicator(
-                color: AppColors.primary,
-                onRefresh: controller.refreshProfile,
-                child: ListView(
-                  controller: controller.hobbiesScrollController,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.fromLTRB(0, 20.w, 0, 24.w),
-                  children: const [ProfileHobbiesBody()],
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

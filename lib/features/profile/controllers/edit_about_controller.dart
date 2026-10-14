@@ -1,6 +1,6 @@
 import 'package:brofile/core/utils/constants/app_texts.dart';
-import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/helpers/app_helper.dart';
+import 'package:brofile/core/utils/helpers/app_platform.dart';
 import 'package:brofile/features/profile/controllers/profile_controller.dart';
 import 'package:brofile/features/profile/data/models/profile_models.dart';
 import 'package:flutter/material.dart';
@@ -344,8 +344,7 @@ class EditAboutController extends GetxController {
         if (year != null) initial = DateTime(year);
       }
     }
-    final picked = await showDatePicker(
-      context: Get.context!,
+    final picked = await AppPlatform.pickDate(
       initialDate: initial,
       firstDate: DateTime(1970),
       lastDate: DateTime(DateTime.now().year + 6),
@@ -354,45 +353,7 @@ class EditAboutController extends GetxController {
   }
 
   Future<String?> _pickOption(List<String> options) {
-    return Get.bottomSheet<String>(
-      Material(
-        color: Colors.white,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-        child: SafeArea(
-          top: false,
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: Get.height * 0.55),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SizedBox(height: 12),
-                Container(
-                  width: 40,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: AppColors.neutral200,
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-                Flexible(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: options.length,
-                    itemBuilder: (context, index) {
-                      final option = options[index];
-                      return ListTile(
-                        title: Text(option),
-                        onTap: () => Get.back(result: option),
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+    return AppPlatform.showOptions(options);
   }
 
   @override

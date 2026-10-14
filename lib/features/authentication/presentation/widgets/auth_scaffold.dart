@@ -1,4 +1,3 @@
-import 'package:brofile/core/utils/constants/icon_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,12 +11,10 @@ class AuthScaffold extends StatelessWidget {
     super.key,
     required this.children,
     this.showBackButton = false,
-    this.backIcon = IconPath.arrowBack,
   });
 
   final List<Widget> children;
   final bool showBackButton;
-  final String backIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +33,7 @@ class AuthScaffold extends StatelessWidget {
                     padding: EdgeInsets.only(left: 16.w, top: 18.h),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: AuthBackButton(icon: backIcon),
+                      child: const AuthBackButton(),
                     ),
                   ),
                 ...children,

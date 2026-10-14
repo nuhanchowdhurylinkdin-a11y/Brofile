@@ -1,6 +1,7 @@
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
 import 'package:brofile/core/utils/helpers/app_helper.dart';
+import 'package:brofile/core/utils/helpers/app_platform.dart';
 import 'package:brofile/core/utils/helpers/profile_navigation.dart';
 import 'package:brofile/features/profile/controllers/profile_controller.dart';
 import 'package:brofile/features/profile/data/models/profile_models.dart';
@@ -212,34 +213,7 @@ class AspirationsController extends GetxController {
   }
 
   Future<void> pickStatus() async {
-    final picked = await Get.bottomSheet<String>(
-      Material(
-        color: Colors.white,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-        child: SafeArea(
-          top: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(height: 12),
-              Container(
-                width: 40,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: const Color(0xFFE9EAEB),
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              for (final option in statuses)
-                ListTile(
-                  title: Text(option),
-                  onTap: () => Get.back(result: option),
-                ),
-            ],
-          ),
-        ),
-      ),
-    );
+    final picked = await AppPlatform.showOptions(statuses);
     if (picked == AppText.inProgress) formStatus.value = AspirationStatus.inProgress;
     if (picked == AppText.planning) formStatus.value = AspirationStatus.planning;
     if (picked == AppText.ideaStage) formStatus.value = AspirationStatus.ideaStage;
@@ -252,8 +226,7 @@ class AspirationsController extends GetxController {
         initial = _monthYear.parse(formTarget.value);
       } catch (_) {}
     }
-    final picked = await showDatePicker(
-      context: Get.context!,
+    final picked = await AppPlatform.pickDate(
       initialDate: initial,
       firstDate: DateTime(DateTime.now().year),
       lastDate: DateTime(DateTime.now().year + 20),

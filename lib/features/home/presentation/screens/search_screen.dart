@@ -1,3 +1,4 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/common/widgets/search_filter_bar.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
@@ -21,26 +22,22 @@ class SearchScreen extends GetView<HomeSearchController> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(title: AppText.search, onBack: Get.back),
-            SearchFilterBar(
-              controller: controller.textController,
-              focusNode: controller.focusNode,
-              onChanged: controller.onQuery,
-              onFilter: controller.openFilter,
-            ),
-            Expanded(
-              child: Obx(() {
-                controller.query.value;
-                controller.focused.value;
-                if (controller.showSuggestions) {
-                  return _SuggestionList(hits: controller.hits);
-                }
-                return const _IdleSearch();
-              }),
-            ),
-          ],
+        body: HideOnScroll(
+          header: PleasureSubHeader(title: AppText.search, onBack: Get.back),
+          pinned: SearchFilterBar(
+            controller: controller.textController,
+            focusNode: controller.focusNode,
+            onChanged: controller.onQuery,
+            onFilter: controller.openFilter,
+          ),
+          body: Obx(() {
+            controller.query.value;
+            controller.focused.value;
+            if (controller.showSuggestions) {
+              return _SuggestionList(hits: controller.hits);
+            }
+            return const _IdleSearch();
+          }),
         ),
       ),
     );

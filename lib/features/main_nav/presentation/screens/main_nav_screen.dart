@@ -21,22 +21,54 @@ class MainNavScreen extends GetView<MainNavController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => PopScope(
-        canPop: controller.isHome,
-        onPopInvokedWithResult: (didPop, _) {
-          if (!didPop) controller.backToHome();
-        },
-        child: Scaffold(
-          backgroundColor: Colors.white,
-          extendBody: true,
-          body: IndexedStack(
-            index: controller.currentTab.value.index,
-            children: _tabs,
+    return NotificationListener<ScrollNotification>(
+      onNotification: (notification) {
+        if (notification is ScrollStartNotification) {
+          controller.onScrollStart();
+        } else if (notification is ScrollUpdateNotification) {
+          controller.onBodyScroll(notification);
+        } else if (notification is ScrollEndNotification) {
+          controller.onScrollEnd();
+        }
+        return false;
+      },
+      child: Obx(
+        () => PopScope(
+          canPop: controller.isHome,
+          onPopInvokedWithResult: (didPop, _) {
+            if (!didPop) controller.backToHome();
+          },
+          child: Scaffold(
+            backgroundColor: Colors.white,
+            extendBody: true,
+            body: IndexedStack(
+              index: controller.currentTab.value.index,
+              children: _tabs,
+            ),
+            bottomNavigationBar: const _HidingBottomNav(),
           ),
-          bottomNavigationBar: const AppBottomNavBar(),
         ),
       ),
     );
+  }
+}
+
+class _HidingBottomNav extends GetView<MainNavController> {
+  const _HidingBottomNav();
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      final hidden = controller.navHidden.value;
+      return ClipRect(
+        child: FractionalTranslation(
+          translation: Offset(0, hidden),
+          child: IgnorePointer(
+            ignoring: hidden > 0.85,
+            child: const AppBottomNavBar(),
+          ),
+        ),
+      );
+    });
   }
 }

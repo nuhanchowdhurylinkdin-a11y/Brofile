@@ -1,3 +1,4 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
@@ -39,17 +40,15 @@ class _BusinessProfileBody extends GetView<BusinessProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Obx(
-          () => PleasureSubHeader(
-            title: controller.studioName.value,
-            onBack: Get.back,
-            showClose: false,
-          ),
+    return HideOnScroll(
+      header: Obx(
+        () => PleasureSubHeader(
+          title: controller.studioName.value,
+          onBack: Get.back,
+          showClose: false,
         ),
-        Expanded(
-          child: CustomScrollView(
+      ),
+      body: CustomScrollView(
             controller: controller.scrollController,
             slivers: [
               SliverPadding(
@@ -85,8 +84,6 @@ class _BusinessProfileBody extends GetView<BusinessProfileController> {
               SliverToBoxAdapter(child: SizedBox(height: 32.w)),
             ],
           ),
-        ),
-      ],
     );
   }
 }
