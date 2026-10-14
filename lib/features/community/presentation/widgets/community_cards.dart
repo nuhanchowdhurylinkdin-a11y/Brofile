@@ -603,3 +603,144 @@ class _GlassPill extends StatelessWidget {
     );
   }
 }
+
+class CommunityTopicChip extends StatelessWidget {
+  const CommunityTopicChip(this.label, {super.key});
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.w),
+      decoration: BoxDecoration(
+        color: AppColors.orangeLight,
+        borderRadius: BorderRadius.circular(20.r),
+      ),
+      child: Text(
+        label,
+        style: manrope(12, weight: FontWeight.w500, color: AppColors.orange, lineHeight: 16),
+      ),
+    );
+  }
+}
+
+class OwnedCommunityCard extends StatelessWidget {
+  const OwnedCommunityCard({super.key, required this.community, required this.onTap});
+
+  final CommunityItem community;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(12.w),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12.r),
+          boxShadow: const [BoxShadow(color: Color(0x14000000), blurRadius: 6)],
+        ),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12.r),
+              child: Image.asset(community.image, width: 148.w, height: 164.w, fit: BoxFit.cover),
+            ),
+            SizedBox(width: 16.w),
+            Expanded(
+              child: SizedBox(
+                height: 164.w,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      community.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: manrope(16, weight: FontWeight.w700, color: const Color(0xFF252B37), lineHeight: 24),
+                    ),
+                    SizedBox(height: 4.w),
+                    CommunityTopicChip(community.topicChip),
+                    SizedBox(height: 8.w),
+                    MemberStats(
+                      members: community.members,
+                      online: community.online,
+                      style: manrope(14, color: AppColors.neutral700),
+                    ),
+                    SizedBox(height: 8.w),
+                    Expanded(
+                      child: Text(
+                        community.description,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: manrope(14, color: const Color(0xFF535862), lineHeight: 20),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class JoinedCommunityCard extends StatelessWidget {
+  const JoinedCommunityCard({super.key, required this.community, required this.onTap});
+
+  final CommunityItem community;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(12.w),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: const Color(0xFFEFEFEF)),
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AspectRatio(
+              aspectRatio: 104 / 80,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.r),
+                child: Image.asset(community.image, fit: BoxFit.cover),
+              ),
+            ),
+            SizedBox(height: 8.w),
+            MemberStats(
+              members: community.members,
+              online: community.online,
+              spread: true,
+              style: manrope(12, color: AppColors.neutral700),
+            ),
+            SizedBox(height: 8.w),
+            Text(
+              community.name,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: manrope(16, weight: FontWeight.w600, color: const Color(0xFF252B37), lineHeight: 24),
+            ),
+            Text(
+              community.tagline,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: manrope(14, color: const Color(0xFF717680), lineHeight: 20),
+            ),
+            SizedBox(height: 8.w),
+            CommunityTopicChip(community.topicChip),
+          ],
+        ),
+      ),
+    );
+  }
+}

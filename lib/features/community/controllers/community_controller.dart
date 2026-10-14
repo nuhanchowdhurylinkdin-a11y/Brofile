@@ -4,6 +4,7 @@ import 'package:brofile/core/utils/constants/image_path.dart';
 import 'package:brofile/core/utils/helpers/app_helper.dart';
 import 'package:brofile/features/community/data/models/community_models.dart';
 import 'package:brofile/features/home/controllers/home_controller.dart';
+import 'package:brofile/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -256,12 +257,133 @@ class CommunityController extends GetxController {
     );
   }
 
-  void openCreate() => AppHelperFunctions.showSnackBar(AppText.comingSoon);
+  late final profileOwned = <CommunityItem>[
+    CommunityItem(
+      id: 'mountain-lovers',
+      name: 'Mountain Lovers',
+      image: ImagePath.mountainCover,
+      category: 'Adventure',
+      interest: 'Hiking',
+      description: AppText.mountainLoversDescription,
+      about: AppText.mountainLoversAbout,
+      createdOn: AppText.createdOnCommunity,
+      visibilityLabel: AppText.publicCommunity,
+      joinPolicy: AppText.anyoneCanJoin,
+      memberAvatars: _smallCrowd,
+      owned: true,
+      joined: true,
+    ),
+    CommunityItem(
+      id: 'photography-hub',
+      name: 'Photography Hub',
+      image: ImagePath.photographyHub,
+      category: 'Creative',
+      interest: 'Photography',
+      description: AppText.photographyHubDescription,
+      about: AppText.photographyHubDescription,
+      createdOn: AppText.createdOnCommunity,
+      visibilityLabel: AppText.publicCommunity,
+      joinPolicy: AppText.anyoneCanJoin,
+      memberAvatars: _smallCrowd,
+      owned: true,
+      joined: true,
+    ),
+    CommunityItem(
+      id: 'coffee-lovers-owned',
+      name: 'Coffee Lovers',
+      image: ImagePath.coffeeLoversOwned,
+      category: _lifestyle,
+      interest: 'Coffee',
+      description: AppText.coffeeLoversOwnedDescription,
+      about: AppText.coffeeLoversOwnedDescription,
+      createdOn: AppText.createdOnCommunity,
+      visibilityLabel: AppText.publicCommunity,
+      joinPolicy: AppText.anyoneCanJoin,
+      memberAvatars: _smallCrowd,
+      owned: true,
+      joined: true,
+    ),
+  ].obs;
+
+  late final List<CommunityItem> profileJoined = [
+    CommunityItem(
+      id: 'hikers-united',
+      name: 'Hikers United',
+      image: ImagePath.hikersUnited,
+      category: 'Adventure',
+      interest: 'Hiking',
+      tagline: AppText.joinedCommunityTagline,
+      memberAvatars: _smallCrowd,
+      joined: true,
+    ),
+    CommunityItem(
+      id: 'cycling-society',
+      name: 'Cycling Society',
+      image: ImagePath.cyclingSociety,
+      category: 'Sports',
+      interest: 'Cycling',
+      tagline: AppText.joinedCommunityTagline,
+      memberAvatars: _smallCrowd,
+      joined: true,
+    ),
+    CommunityItem(
+      id: 'home-barista-club',
+      name: 'Home Barista Club',
+      image: ImagePath.myBaristaClub,
+      category: _lifestyle,
+      interest: 'Coffee',
+      tagline: AppText.joinedCommunityTagline,
+      joined: true,
+    ),
+    CommunityItem(
+      id: 'style-and-you',
+      name: 'Style & You',
+      image: ImagePath.myStyleAndYou,
+      category: _lifestyle,
+      interest: 'Fashion',
+      tagline: AppText.joinedCommunityTagline,
+      joined: true,
+    ),
+    CommunityItem(
+      id: 'diy-crafts-hub',
+      name: 'DIY & Crafts Hub',
+      image: ImagePath.trendingDiyCrafts,
+      category: _lifestyle,
+      interest: 'DIY Projects',
+      tagline: AppText.joinedCommunityTagline,
+      joined: true,
+    ),
+    CommunityItem(
+      id: 'plant-parents-profile',
+      name: 'Plant Parents',
+      image: ImagePath.trendingPlantParents,
+      category: _lifestyle,
+      interest: 'Food',
+      tagline: AppText.joinedCommunityTagline,
+      joined: true,
+    ),
+  ];
+
+  void openCreate() => Get.toNamed(AppRoute.createCommunityScreen);
+
+  void addOwned(CommunityItem community) => profileOwned.insert(0, community);
   void openFilter() => AppHelperFunctions.showSnackBar(AppText.comingSoon);
-  void openSeeAll(String section) =>
-      AppHelperFunctions.showSnackBar(AppText.comingSoon);
-  void openCommunity(CommunityItem community) =>
-      AppHelperFunctions.showSnackBar(AppText.comingSoon);
+  void openMyCommunities() => Get.toNamed(AppRoute.myCommunitiesScreen);
+  void openSeeAll(String section) {
+    if (section == AppText.myCommunities) {
+      openMyCommunities();
+      return;
+    }
+    AppHelperFunctions.showSnackBar(AppText.comingSoon);
+  }
+
+  void openCommunity(CommunityItem community) {
+    Get.toNamed(AppRoute.communityDetailsScreen, arguments: community);
+  }
+
+  void deleteOwned(CommunityItem community) {
+    profileOwned.removeWhere((item) => item.id == community.id);
+  }
 
   @override
   void onClose() {

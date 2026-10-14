@@ -60,6 +60,19 @@ class IconPath{
   static const String interestGrooming = '$_community/grooming.svg';
   static const String lifestyle = '$_community/lifestyle.svg';
   static const String viewDetailsArrow = '$_community/arrow_up_right.svg';
+  static const String aboutGlobe = '$_community/about_globe.svg';
+  static const String aboutMail = '$_community/about_mail.svg';
+  static const String aboutLicenses = '$_community/about_licenses.svg';
+  static const String whoCanPost = '$_community/who_can_post.svg';
+  static const String addImage = '$_community/add_image.svg';
+  static const String checkSelected = '$_community/check_selected.svg';
+  static const String checkFilled = '$_community/check_filled.svg';
+  static const String radioEmpty = '$_community/radio_empty.svg';
+  static const String mutual = '$_community/mutual.svg';
+  static const String globe = '$_community/globe.svg';
+  static const String lockPrivacy = '$_community/lock_privacy.svg';
+  static const String locationMarker = '$_community/location_marker.svg';
+  static const String asterisk = '$_community/asterisk.svg';
 
   // Pleasure
   static const String _pleasure = 'assets/pleasure_icon';
@@ -117,6 +130,26 @@ class IconPath{
   static const String interestFishing = '$_profile/interest_fishing.svg';
   static const String interestReading = '$_profile/interest_reading.svg';
   static const String interestMusic = '$_profile/interest_music.svg';
+  static const String profileSettings = '$_profile/settings.svg';
+  static const String profileLock = '$_profile/lock.svg';
+  static const String profileLanguage = '$_profile/language.svg';
+  static const String profileNotifications = '$_profile/notifications.svg';
+  static const String profileBlocked = '$_profile/blocked.svg';
+  static const String profileHiddenCommunities = '$_profile/hidden_communities.svg';
+  static const String profileUser = '$_profile/user.svg';
+  static const String profilePrivacyStar = '$_profile/privacy_star.svg';
+  static const String profileUsers = '$_profile/users.svg';
+  static const String profilePrivacyActivities = '$_profile/privacy_activities.svg';
+  static const String profilePodcast = '$_profile/podcast.svg';
+  static const String profilePrivacyCircle = '$_profile/privacy_circle.svg';
+  static const String profileHelp = '$_profile/help.svg';
+  static const String profileContactUs = '$_profile/contact_us.svg';
+  static const String profileTerms = '$_profile/terms.svg';
+  static const String profilePrivacyPolicy = '$_profile/privacy_policy.svg';
+  static const String profileAlert = '$_profile/alert.svg';
+  static const String profileLogout = '$_profile/logout.svg';
+  static const String profileChevronRight = '$_profile/chevron_right.svg';
+  static const String plusWhite = '$_profile/plus_white.svg';
 
   // Comments
   static const String _comment = 'assets/comment_icon';

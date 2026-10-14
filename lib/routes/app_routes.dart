@@ -11,6 +11,15 @@ import '../features/authentication/presentation/screens/reset_password_screen.da
 import '../features/authentication/presentation/screens/sign_in_screen.dart';
 import '../features/authentication/presentation/screens/sign_up_screen.dart';
 import '../features/community/controllers/community_controller.dart';
+import '../features/community/controllers/community_details_controller.dart';
+import '../features/community/controllers/community_new_post_controller.dart';
+import '../features/community/controllers/create_community_controller.dart';
+import '../features/community/controllers/invite_members_controller.dart';
+import '../features/community/presentation/screens/community_details_screen.dart';
+import '../features/community/presentation/screens/community_new_post_screen.dart';
+import '../features/community/presentation/screens/create_community_screen.dart';
+import '../features/community/presentation/screens/invite_members_screen.dart';
+import '../features/community/presentation/screens/my_communities_screen.dart';
 import '../features/discover/controllers/create_product_controller.dart';
 import '../features/discover/controllers/discover_controller.dart';
 import '../features/discover/controllers/recycle_product_details_controller.dart';
@@ -23,10 +32,25 @@ import '../features/pleasure/controllers/pleasure_controller.dart';
 import '../features/pleasure/controllers/pleasure_details_controller.dart';
 import '../features/profile/controllers/add_hobby_controller.dart';
 import '../features/profile/controllers/album_details_controller.dart';
+import '../features/profile/controllers/edit_about_controller.dart';
 import '../features/profile/controllers/profile_controller.dart';
+import '../features/profile/controllers/settings_controller.dart';
+import '../features/profile/presentation/screens/about_brofile_screen.dart';
+import '../features/profile/presentation/screens/about_me_screen.dart';
 import '../features/profile/presentation/screens/add_hobby_screen.dart';
 import '../features/profile/presentation/screens/album_details_screen.dart';
+import '../features/profile/presentation/screens/blocked_users_screen.dart';
+import '../features/profile/presentation/screens/change_password_screen.dart';
+import '../features/profile/presentation/screens/contact_us_screen.dart';
+import '../features/profile/presentation/screens/help_center_screen.dart';
+import '../features/profile/presentation/screens/hidden_communities_screen.dart';
 import '../features/profile/presentation/screens/hobbies_screen.dart';
+import '../features/profile/presentation/screens/notifications_settings_screen.dart';
+import '../features/profile/presentation/screens/privacy_policy_screen.dart';
+import '../features/profile/controllers/my_circle_controller.dart';
+import '../features/profile/presentation/screens/add_to_circle_screen.dart';
+import '../features/profile/presentation/screens/my_circle_screen.dart';
+import '../features/profile/presentation/screens/settings_screen.dart';
 import '../features/pleasure/presentation/screens/create_pleasure_screen.dart';
 import '../features/pleasure/presentation/screens/pleasure_details_screen.dart';
 import '../features/main_nav/presentation/screens/main_nav_screen.dart';
@@ -51,6 +75,23 @@ class AppRoute {
   static String hobbiesScreen = "/hobbiesScreen";
   static String addHobbyScreen = "/addHobbyScreen";
   static String albumDetailsScreen = "/albumDetailsScreen";
+  static String aboutMeScreen = "/aboutMeScreen";
+  static String settingsScreen = "/settingsScreen";
+  static String changePasswordScreen = "/changePasswordScreen";
+  static String notificationsSettingsScreen = "/notificationsSettingsScreen";
+  static String blockedUsersScreen = "/blockedUsersScreen";
+  static String hiddenCommunitiesScreen = "/hiddenCommunitiesScreen";
+  static String helpCenterScreen = "/helpCenterScreen";
+  static String contactUsScreen = "/contactUsScreen";
+  static String privacyPolicyScreen = "/privacyPolicyScreen";
+  static String myCommunitiesScreen = "/myCommunitiesScreen";
+  static String communityDetailsScreen = "/communityDetailsScreen";
+  static String communityNewPostScreen = "/communityNewPostScreen";
+  static String inviteMembersScreen = "/inviteMembersScreen";
+  static String createCommunityScreen = "/createCommunityScreen";
+  static String aboutBrofileScreen = "/aboutBrofileScreen";
+  static String myCircleScreen = "/myCircleScreen";
+  static String addToCircleScreen = "/addToCircleScreen";
 
   static String getSplashScreen() => splashScreen;
   static String getOnboardingScreen() => onboardingScreen;
@@ -157,6 +198,120 @@ class AppRoute {
           Get.delete<AlbumDetailsController>();
         }
         Get.put(AlbumDetailsController());
+      }),
+    ),
+    GetPage(
+      name: aboutMeScreen,
+      page: () => const AboutMeScreen(),
+      binding: BindingsBuilder(() {
+        if (Get.isRegistered<EditAboutController>()) {
+          Get.delete<EditAboutController>();
+        }
+        Get.put(EditAboutController());
+      }),
+    ),
+    GetPage(
+      name: settingsScreen,
+      page: () => const SettingsScreen(),
+      binding: BindingsBuilder(() {
+        if (Get.isRegistered<SettingsController>()) {
+          Get.delete<SettingsController>();
+        }
+        Get.put(SettingsController());
+      }),
+    ),
+    GetPage(
+      name: changePasswordScreen,
+      page: () => const ChangePasswordScreen(),
+    ),
+    GetPage(
+      name: notificationsSettingsScreen,
+      page: () => const NotificationsSettingsScreen(),
+    ),
+    GetPage(
+      name: blockedUsersScreen,
+      page: () => const BlockedUsersScreen(),
+    ),
+    GetPage(
+      name: hiddenCommunitiesScreen,
+      page: () => const HiddenCommunitiesScreen(),
+    ),
+    GetPage(
+      name: helpCenterScreen,
+      page: () => const HelpCenterScreen(),
+    ),
+    GetPage(
+      name: contactUsScreen,
+      page: () => const ContactUsScreen(),
+    ),
+    GetPage(
+      name: privacyPolicyScreen,
+      page: () => const PrivacyPolicyScreen(),
+    ),
+    GetPage(
+      name: myCommunitiesScreen,
+      page: () => const MyCommunitiesScreen(),
+    ),
+    GetPage(
+      name: communityDetailsScreen,
+      page: () => const CommunityDetailsScreen(),
+      binding: BindingsBuilder(() {
+        if (Get.isRegistered<CommunityDetailsController>()) {
+          Get.delete<CommunityDetailsController>();
+        }
+        Get.put(CommunityDetailsController());
+      }),
+    ),
+    GetPage(
+      name: communityNewPostScreen,
+      page: () => const CommunityNewPostScreen(),
+      binding: BindingsBuilder(() {
+        if (Get.isRegistered<CommunityNewPostController>()) {
+          Get.delete<CommunityNewPostController>();
+        }
+        Get.put(CommunityNewPostController());
+      }),
+    ),
+    GetPage(
+      name: inviteMembersScreen,
+      page: () => const InviteMembersScreen(),
+      binding: BindingsBuilder(() {
+        if (Get.isRegistered<InviteMembersController>()) {
+          Get.delete<InviteMembersController>();
+        }
+        Get.put(InviteMembersController());
+      }),
+    ),
+    GetPage(
+      name: createCommunityScreen,
+      page: () => const CreateCommunityScreen(),
+      binding: BindingsBuilder(() {
+        if (Get.isRegistered<CreateCommunityController>()) {
+          Get.delete<CreateCommunityController>();
+        }
+        Get.put(CreateCommunityController());
+      }),
+    ),
+    GetPage(
+      name: aboutBrofileScreen,
+      page: () => const AboutBrofileScreen(),
+    ),
+    GetPage(
+      name: myCircleScreen,
+      page: () => const MyCircleScreen(),
+      binding: BindingsBuilder(() {
+        if (!Get.isRegistered<MyCircleController>()) {
+          Get.put(MyCircleController());
+        }
+      }),
+    ),
+    GetPage(
+      name: addToCircleScreen,
+      page: () => const AddToCircleScreen(),
+      binding: BindingsBuilder(() {
+        if (!Get.isRegistered<MyCircleController>()) {
+          Get.put(MyCircleController());
+        }
       }),
     ),
   ];

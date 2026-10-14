@@ -19,8 +19,70 @@ class ProfileController extends GetxController {
   final activityFilter = ProfileActivityFilter.all.obs;
   final interestsExpanded = false.obs;
 
-  static const bio =
-      'Passionate outdoor adventurer exploring breathtaking trails and serene nature retreats, sharing unforgettable hiking experiences and tips for fellow nature lovers.';
+  final displayName = 'William'.obs;
+  final username = '@William'.obs;
+  final headline = 'UX Designer • Outdoor Explorer'.obs;
+  final locationLabel = 'New York, USA'.obs;
+  final website = 'williamadventures.com'.obs;
+  final bio =
+      'Passionate outdoor adventurer exploring breathtaking trails and serene nature retreats, sharing unforgettable hiking experiences and tips for fellow nature lovers.'
+          .obs;
+  final phone = '+012 124 - 2365'.obs;
+  final email = 'william.designer@gmail.com'.obs;
+  final philosophy =
+      '"Leave every place better than you found it."'.obs;
+  final skills = <String>[
+    'UX Design',
+    'UI Design',
+    'Research',
+    'Figma',
+    'Graphic Design',
+    'Photography',
+  ].obs;
+  final jobs = <EmploymentEntry>[
+    EmploymentEntry(
+      title: 'UX Designer',
+      company: 'Servo Digital',
+      period: '2023 • Present',
+      location: 'New York, USA',
+      type: 'Full-time',
+      startDate: 'Feb 2023',
+      current: true,
+    ),
+    EmploymentEntry(
+      title: 'UI/UX Designer',
+      company: 'ABC Studio',
+      period: '2021 • 2023',
+      location: 'New York, USA',
+      type: 'Full-time',
+      startDate: 'Jan 2021',
+      endDate: 'Jan 2023',
+    ),
+  ].obs;
+  final education = <EducationEntry>[
+    EducationEntry(
+      course: 'B.Sc. in Computer Science',
+      institute: 'University of XYZ',
+      period: '2017 - 2021',
+      location: 'New York, USA',
+      startDate: 'Feb 2017',
+      endDate: 'Jan 2021',
+    ),
+    EducationEntry(
+      course: 'B.Sc. in Computer Science',
+      institute: 'University of XYZ',
+      period: '2017 - 2021',
+      location: 'New York, USA',
+      startDate: 'Feb 2017',
+      endDate: 'Jan 2021',
+    ),
+  ].obs;
+  final links = <String>[
+    'www.facebook.com/william',
+    'www.twitter.com/william123',
+    'www.linkedin.com/in/william',
+    'www.instagram.com/william_photos',
+  ].obs;
 
   static const interests = [
     ProfileInterest(label: 'Hiking', icon: IconPath.interestHiking),
@@ -198,8 +260,18 @@ class ProfileController extends GetxController {
       Get.find<CommunityController>().joinedCommunities;
 
   void selectTab(ProfileTab tab) {
+    if (tab == ProfileTab.about) {
+      selectedTab.value = ProfileTab.about;
+      collapseAll();
+      openAboutMe();
+      return;
+    }
     if (tab == ProfileTab.hobbies) {
       openHobbies();
+      return;
+    }
+    if (tab == ProfileTab.communities) {
+      openMyCommunities();
       return;
     }
     selectedTab.value = tab;
@@ -210,6 +282,12 @@ class ProfileController extends GetxController {
     collapseAll();
     Get.toNamed(AppRoute.hobbiesScreen);
   }
+
+  void openAboutMe() => Get.toNamed(AppRoute.aboutMeScreen);
+
+  void openMyCommunities() => Get.toNamed(AppRoute.myCommunitiesScreen);
+
+  void openSettings() => Get.toNamed(AppRoute.settingsScreen);
 
   void closeHobbies() {
     collapseAll();
@@ -274,6 +352,8 @@ class ProfileController extends GetxController {
   }
 
   void addBusiness() => AppHelperFunctions.showSnackBar(AppText.comingSoon);
+
+  void openMyCircle() => Get.toNamed(AppRoute.myCircleScreen);
 
   void openDetails(String name) =>
       AppHelperFunctions.showSnackBar(AppText.comingSoon);

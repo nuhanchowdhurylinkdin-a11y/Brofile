@@ -10,11 +10,13 @@ class PleasureSubHeader extends StatelessWidget {
     super.key,
     required this.title,
     required this.onBack,
+    this.subtitle,
     this.onClose,
     this.showClose = true,
   });
 
   final String title;
+  final String? subtitle;
   final VoidCallback onBack;
   final VoidCallback? onClose;
   final bool showClose;
@@ -39,15 +41,27 @@ class PleasureSubHeader extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: manrope(
-                    14,
-                    weight: FontWeight.w600,
-                    color: AppColors.neutral600,
-                    lineHeight: 20,
-                  ),
+                child: Column(
+                  children: [
+                    Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: manrope(
+                        14,
+                        weight: FontWeight.w600,
+                        color: AppColors.neutral600,
+                        lineHeight: 20,
+                      ),
+                    ),
+                    if (subtitle != null) ...[
+                      SizedBox(height: 4.w),
+                      Text(
+                        subtitle!,
+                        textAlign: TextAlign.center,
+                        style: manrope(12, color: AppColors.neutral500, lineHeight: 16),
+                      ),
+                    ],
+                  ],
                 ),
               ),
               if (showClose)

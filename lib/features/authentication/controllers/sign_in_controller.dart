@@ -1,6 +1,3 @@
-import 'package:brofile/core/utils/constants/app_texts.dart';
-import 'package:brofile/core/utils/helpers/app_helper.dart';
-import 'package:brofile/core/utils/validators/app_validator.dart';
 import 'package:brofile/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,22 +10,7 @@ class SignInController extends GetxController {
 
   void togglePasswordVisibility() => isPasswordHidden.toggle();
 
-  Future<void> signIn() async {
-    final error = AppValidator.validateEmailOrPhone(emailController.text) ??
-        (passwordController.text.isEmpty ? AppText.passwordRequired : null);
-    if (error != null) {
-      AppHelperFunctions.showSnackBar(error);
-      return;
-    }
-
-    isLoading.value = true;
-    try {
-      // TODO: call the sign in API and save the token.
-      Get.offAllNamed(AppRoute.getMainNavScreen());
-    } finally {
-      isLoading.value = false;
-    }
-  }
+  void signIn() => Get.offAllNamed(AppRoute.getMainNavScreen());
 
   void signInWithFacebook() {
     // TODO: integrate Facebook sign in.

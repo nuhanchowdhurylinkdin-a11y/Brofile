@@ -67,6 +67,85 @@ class HobbyItem {
   final disliked = false.obs;
 }
 
+class EmploymentEntry {
+  EmploymentEntry({
+    required this.title,
+    required this.company,
+    required this.period,
+    this.location = '',
+    this.type = '',
+    this.startDate = '',
+    this.endDate = '',
+    this.current = false,
+    this.logo,
+  });
+
+  String title;
+  String company;
+  String period;
+  String location;
+  String type;
+  String startDate;
+  String endDate;
+  bool current;
+  final String? logo;
+}
+
+class EducationEntry {
+  EducationEntry({
+    required this.course,
+    required this.institute,
+    required this.period,
+    this.location = '',
+    this.startDate = '',
+    this.endDate = '',
+    this.current = false,
+  });
+
+  String course;
+  String institute;
+  String period;
+  String location;
+  String startDate;
+  String endDate;
+  bool current;
+}
+
+class BlockedUser {
+  BlockedUser({
+    required this.id,
+    required this.name,
+    required this.handle,
+    required this.image,
+  });
+
+  final String id;
+  final String name;
+  final String handle;
+  final String image;
+}
+
+class HiddenCommunity {
+  HiddenCommunity({
+    required this.id,
+    required this.name,
+    required this.members,
+    required this.image,
+  });
+
+  final String id;
+  final String name;
+  final String members;
+  final String image;
+}
+
+class HelpArticle {
+  const HelpArticle({required this.question, required this.answer});
+
+  final String question;
+  final String answer;
+}
+
 class HobbyCollection {
   HobbyCollection({
     required this.kind,
@@ -87,4 +166,26 @@ class HobbyCollection {
   final RxList<HobbyItem> items;
   final isExpanded = false.obs;
   final isRemoving = false.obs;
+}
+
+enum CircleGroup { family, relatives, friends }
+
+class CircleMember {
+  CircleMember({
+    required this.id,
+    required this.name,
+    required this.image,
+    required this.relation,
+    required this.group,
+    this.handle = '',
+    this.online = true,
+  });
+
+  final String id;
+  final String name;
+  final String image;
+  final String relation;
+  final CircleGroup group;
+  final String handle;
+  final bool online;
 }

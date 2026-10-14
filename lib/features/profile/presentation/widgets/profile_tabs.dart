@@ -66,7 +66,7 @@ class ProfileTabs extends GetView<ProfileController> {
                       iconBg: const Color(0xFFFEE4E2),
                       selected: false,
                       expand: false,
-                      onTap: controller.addBusiness,
+                      onTap: controller.openMyCircle,
                     ),
                   ),
                   SizedBox(width: 8.w),

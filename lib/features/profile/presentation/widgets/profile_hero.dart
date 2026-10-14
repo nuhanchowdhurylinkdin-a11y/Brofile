@@ -41,9 +41,15 @@ class ProfileHero extends GetView<ProfileController> {
                   right: 12.w,
                   child: Row(
                     children: [
-                      _CoverIcon(icon: IconPath.profileCoverEdit),
+                      _CoverIcon(
+                        icon: IconPath.profileCoverEdit,
+                        onTap: controller.openAboutMe,
+                      ),
                       SizedBox(width: 11.w),
-                      _CoverIcon(icon: IconPath.addPhotoCamera),
+                      _CoverIcon(
+                        icon: IconPath.addPhotoCamera,
+                        onTap: controller.openAboutMe,
+                      ),
                     ],
                   ),
                 ),
@@ -91,26 +97,35 @@ class ProfileHero extends GetView<ProfileController> {
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'William',
-                style: manrope(16, weight: FontWeight.w600, color: AppColors.primary, lineHeight: 24),
-              ),
-              SizedBox(width: 4.w),
-              Text(
-                '@William',
-                style: manrope(12, color: AppColors.neutral500, lineHeight: 16),
-              ),
-            ],
+          GestureDetector(
+            onTap: controller.openAboutMe,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Obx(
+                  () => Text(
+                    controller.displayName.value,
+                    style: manrope(16, weight: FontWeight.w600, color: AppColors.primary, lineHeight: 24),
+                  ),
+                ),
+                SizedBox(width: 4.w),
+                Obx(
+                  () => Text(
+                    controller.username.value,
+                    style: manrope(12, color: AppColors.neutral500, lineHeight: 16),
+                  ),
+                ),
+              ],
+            ),
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(12.w, 10.w, 12.w, 0),
-            child: Text(
-              ProfileController.bio,
-              textAlign: TextAlign.center,
-              style: manrope(14, color: const Color(0xFF4B5563), lineHeight: 20),
+            child: Obx(
+              () => Text(
+                controller.bio.value,
+                textAlign: TextAlign.center,
+                style: manrope(14, color: const Color(0xFF4B5563), lineHeight: 20),
+              ),
             ),
           ),
           Padding(
@@ -126,9 +141,11 @@ class ProfileHero extends GetView<ProfileController> {
                   children: [
                     SvgPicture.asset(IconPath.profilePin, width: 20.w, height: 20.w),
                     SizedBox(width: 8.w),
-                    Text(
-                      'New York, USA',
-                      style: manrope(14, weight: FontWeight.w500, color: AppColors.neutral600, lineHeight: 20),
+                    Obx(
+                      () => Text(
+                        controller.locationLabel.value,
+                        style: manrope(14, weight: FontWeight.w500, color: AppColors.neutral600, lineHeight: 20),
+                      ),
                     ),
                   ],
                 ),
@@ -137,9 +154,11 @@ class ProfileHero extends GetView<ProfileController> {
                   children: [
                     SvgPicture.asset(IconPath.profileLink, width: 20.w, height: 20.w),
                     SizedBox(width: 8.w),
-                    Text(
-                      'williamadventures.com',
-                      style: manrope(14, weight: FontWeight.w500, color: AppColors.neutral600, lineHeight: 20),
+                    Obx(
+                      () => Text(
+                        controller.website.value,
+                        style: manrope(14, weight: FontWeight.w500, color: AppColors.neutral600, lineHeight: 20),
+                      ),
                     ),
                   ],
                 ),
@@ -163,19 +182,23 @@ class ProfileHero extends GetView<ProfileController> {
 }
 
 class _CoverIcon extends StatelessWidget {
-  const _CoverIcon({required this.icon});
+  const _CoverIcon({required this.icon, required this.onTap});
 
   final String icon;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(8.w),
-      decoration: BoxDecoration(
-        color: AppColors.openNowScrim,
-        borderRadius: BorderRadius.circular(8.r),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(8.w),
+        decoration: BoxDecoration(
+          color: AppColors.openNowScrim,
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        child: SvgPicture.asset(icon, width: 20.w, height: 20.w),
       ),
-      child: SvgPicture.asset(icon, width: 20.w, height: 20.w),
     );
   }
 }

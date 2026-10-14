@@ -107,6 +107,64 @@ class ImagePath{
   static const String newCoffeeRoasters = '$_community/new_coffee_roasters.jpg';
   static const String newArtDoodles = '$_community/new_art_doodles.jpg';
   static const String nearDiyCrafts = '$_community/near_diy_crafts.jpg';
+  static const String mountainCover = '$_community/mountain_cover.png';
+  static const String photographyHub = '$_community/photography_hub.jpg';
+  static const String coffeeLoversOwned = '$_community/coffee_lovers_owned.jpg';
+  static const String hikersUnited = '$_community/hikers_united.jpg';
+  static const String cyclingSociety = '$_community/cycling_society.jpg';
+  static const String createCoverPlaceholder = '$_community/create_cover_placeholder.png';
+  static const String postPreview1 = '$_community/post_preview_1.png';
+  static const String postPreview2 = '$_community/post_preview_2.png';
+  static const String gallery01 = '$_community/gallery_01.png';
+  static const String gallery02 = '$_community/gallery_02.png';
+  static const String gallery03 = '$_community/gallery_03.png';
+  static const String gallery04 = '$_community/gallery_04.png';
+  static const String gallery05 = '$_community/gallery_05.png';
+  static const String gallery06 = '$_community/gallery_06.png';
+  static const String gallery07 = '$_community/gallery_07.png';
+  static const String gallery08 = '$_community/gallery_08.png';
+  static const String gallery09 = '$_community/gallery_09.png';
+  static const String gallery10 = '$_community/gallery_10.png';
+  static const String gallery11 = '$_community/gallery_11.png';
+  static const String gallery12 = '$_community/gallery_12.png';
+  static const String gallery13 = '$_community/gallery_13.png';
+  static const String gallery14 = '$_community/gallery_14.png';
+  static const String gallery15 = '$_community/gallery_15.png';
+  static const String gallery16 = '$_community/gallery_16.png';
+  static const String gallery17 = '$_community/gallery_17.png';
+  static const String gallery18 = '$_community/gallery_18.png';
+  static const String gallery19 = '$_community/gallery_19.png';
+  static const List<String> postGallery = [
+    gallery05,
+    gallery10,
+    gallery15,
+    gallery01,
+    gallery06,
+    gallery11,
+    gallery16,
+    gallery02,
+    gallery07,
+    gallery12,
+    gallery17,
+    gallery03,
+    gallery08,
+    gallery13,
+    gallery18,
+    gallery04,
+    gallery09,
+    gallery14,
+    gallery19,
+  ];
+  static const String inviteLiam = '$_community/invite_liam.png';
+  static const String inviteOlivia = '$_community/invite_olivia.png';
+  static const String inviteNoah = '$_community/invite_noah.png';
+  static const String inviteEmma = '$_community/invite_emma.png';
+  static const String inviteVivian = '$_community/invite_vivian.png';
+  static const String inviteAiden = '$_community/invite_aiden.png';
+  static const String inviteSophia = '$_community/invite_sophia.png';
+  static const String inviteMason = '$_community/invite_mason.png';
+  static const String inviteEthan = '$_community/invite_ethan.png';
+  static const String inviteIsabella = '$_community/invite_isabella.png';
 
   // Pleasure
   static const String _pleasure = 'assets/pleasure_image';
@@ -166,6 +224,16 @@ class ImagePath{
   // Profile
   static const String _profile = 'assets/profile_image';
   static const String profileCover = '$_profile/cover.jpg';
+  static const String circleFarzana = '$_profile/circle_farzana.png';
+  static const String circleNusrat = '$_profile/circle_nusrat.png';
+  static const String blockedJohn = '$_profile/blocked_john.png';
+  static const String blockedSarah = '$_profile/blocked_sarah.png';
+  static const String blockedMike = '$_profile/blocked_mike.png';
+  static const String blockedEmily = '$_profile/blocked_emily.png';
+  static const String hiddenPhotography = '$_profile/hidden_photography.png';
+  static const String hiddenFishing = '$_profile/hidden_fishing.png';
+  static const String hiddenCoffee = '$_profile/hidden_coffee.png';
+  static const String hiddenTravel = '$_profile/hidden_travel.png';
   static const String bizGreenleaf = '$_profile/biz_greenleaf.jpg';
   static const String bizPizza = '$_profile/biz_pizza.jpg';
   static const String catchRelease = '$_profile/catch_release.jpg';
