@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:math' as math;
 
 import 'package:brofile/core/utils/constants/app_texts.dart';
+import 'package:brofile/core/utils/helpers/profile_navigation.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
 import 'package:brofile/features/home/controllers/comments_controller.dart';
@@ -185,11 +186,14 @@ class _CommentHeader extends GetView<CommentsController> {
         children: [
           Padding(
             padding: EdgeInsets.all(2.w),
-            child: _CommentAvatar(
-              image: comment.avatar,
-              size: 40.w,
-              dotSize: 10.w,
-              isOnline: comment.isOnline,
+            child: GestureDetector(
+              onTap: () => ProfileNavigation.open(comment.author),
+              child: _CommentAvatar(
+                image: comment.avatar,
+                size: 40.w,
+                dotSize: 10.w,
+                isOnline: comment.isOnline,
+              ),
             ),
           ),
           SizedBox(width: 16.w),
@@ -202,15 +206,18 @@ class _CommentHeader extends GetView<CommentsController> {
                   child: Row(
                     children: [
                       Flexible(
-                        child: Text(
-                          comment.author,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: manrope(
-                            16,
-                            weight: FontWeight.w700,
-                            color: AppColors.primary,
-                            lineHeight: 24,
+                        child: GestureDetector(
+                          onTap: () => ProfileNavigation.open(comment.author),
+                          child: Text(
+                            comment.author,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: manrope(
+                              16,
+                              weight: FontWeight.w700,
+                              color: AppColors.primary,
+                              lineHeight: 24,
+                            ),
                           ),
                         ),
                       ),
@@ -262,11 +269,14 @@ class _ReplyBody extends GetView<CommentsController> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _CommentAvatar(
-                image: reply.avatar,
-                size: 32.w,
-                dotSize: 8.w,
-                isOnline: reply.isOnline,
+              GestureDetector(
+                onTap: () => ProfileNavigation.open(reply.author),
+                child: _CommentAvatar(
+                  image: reply.avatar,
+                  size: 32.w,
+                  dotSize: 8.w,
+                  isOnline: reply.isOnline,
+                ),
               ),
               SizedBox(width: 8.w),
               Expanded(

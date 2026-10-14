@@ -31,6 +31,9 @@ class IconPath{
   static const String ratingStar = '$_home/star_rating.svg';
   static const String clock = '$_home/clock.svg';
   static const String star = '$_home/star.svg';
+  static const String chatPlus = '$_home/chat_plus.svg';
+  static const String chatRead = '$_home/chat_read.svg';
+  static const String msgCalendar = '$_home/msg_calendar.svg';
 
   // Bottom navigation
   static const String navHome = '$_home/nav_home.svg';
@@ -150,6 +153,34 @@ class IconPath{
   static const String profileLogout = '$_profile/logout.svg';
   static const String profileChevronRight = '$_profile/chevron_right.svg';
   static const String plusWhite = '$_profile/plus_white.svg';
+  static const String aspireCamera = '$_profile/aspire_camera.svg';
+  static const String aspirePen = '$_profile/aspire_pen.svg';
+  static const String aspireCoffee = '$_profile/aspire_coffee.svg';
+  static const String aspireCalendar = '$_profile/aspire_calendar.svg';
+  static const String aspireFamily = '$_profile/aspire_family.svg';
+  static const String aspireLifestyle = '$_profile/aspire_lifestyle.svg';
+  static const String aspireHome = '$_profile/aspire_home.svg';
+  static const String aspireFinance = '$_profile/aspire_finance.svg';
+  static const String aspirePlane = '$_profile/aspire_plane.svg';
+  static const String aspireCamp = '$_profile/aspire_camp.svg';
+  static const String aspireBike = '$_profile/aspire_bike.svg';
+  static const String aspireLights = '$_profile/aspire_lights.svg';
+  static const String aspireEdit = '$_profile/aspire_edit.svg';
+  static const String aspireTrash = '$_profile/aspire_trash.svg';
+  static const String bizInstagram = '$_profile/biz_instagram.svg';
+  static const String bizFacebook = '$_profile/biz_facebook.svg';
+  static const String bizYoutube = '$_profile/biz_youtube.svg';
+  static const String bizWebsite = '$_profile/biz_website.svg';
+  static const String bizCheck = '$_profile/biz_check.svg';
+  static const String bizPhone = '$_profile/biz_phone.svg';
+  static const String bizSave = '$_profile/biz_save.svg';
+  static const String bizNotify = '$_profile/biz_notify.svg';
+  static const String bizOfferingProducts = '$_profile/biz_offering_products.svg';
+  static const String bizOfferingServices = '$_profile/biz_offering_services.svg';
+  static const String bizOfferingEvents = '$_profile/biz_offering_events.svg';
+  static const String bizRadio = '$_profile/biz_radio.svg';
+  static const String bizReasonCheck = '$_profile/biz_reason_check.svg';
+  static const String bizStar = '$_profile/biz_star.svg';
 
   // Comments
   static const String _comment = 'assets/comment_icon';

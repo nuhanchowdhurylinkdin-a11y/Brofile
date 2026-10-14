@@ -94,7 +94,7 @@ class _FeaturedSection extends GetView<DiscoverController> {
                     ),
                     child: FeaturedOverlayCard(
                       business: items[index],
-                      onTap: () => controller.openDetails(items[index].name),
+                      onTap: () => controller.openBusinessProfile(items[index].name),
                     ),
                   );
                 },
@@ -195,7 +195,7 @@ class _LogoCardSection extends GetView<DiscoverController> {
               final business = items[index];
               return LogoBusinessCard(
                 business: business,
-                onTap: () => controller.openDetails(business.name),
+                onTap: () => controller.openBusinessProfile(business.name),
               );
             },
           ),
@@ -234,7 +234,7 @@ class _SuggestedSection extends GetView<DiscoverController> {
               final business = items[index];
               return SuggestedBusinessCard(
                 business: business,
-                onTap: () => controller.openDetails(business.name),
+                onTap: () => controller.openBusinessProfile(business.name),
                 onFollow: () => controller.toggleFollow(business),
               );
             },
@@ -275,7 +275,7 @@ class _NearbySection extends GetView<DiscoverController> {
               final business = items[index];
               return NearbyBusinessCard(
                 business: business,
-                onTap: () => controller.openDetails(business.name),
+                onTap: () => controller.openBusinessProfile(business.name),
               );
             },
           ),

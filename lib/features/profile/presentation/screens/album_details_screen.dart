@@ -6,6 +6,7 @@ import 'package:brofile/core/utils/constants/icon_path.dart';
 import 'package:brofile/core/utils/helpers/app_helper.dart';
 import 'package:brofile/features/home/presentation/widgets/home_text.dart';
 import 'package:brofile/features/profile/controllers/album_details_controller.dart';
+import 'package:brofile/features/profile/controllers/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -351,6 +352,7 @@ class _PhotoActions extends GetView<AlbumDetailsController> {
 
   @override
   Widget build(BuildContext context) {
+    if (ProfileController.viewingAsVisitor) return const SizedBox.shrink();
     return Row(
       children: [
         Expanded(

@@ -33,7 +33,7 @@ class HobbyCollectionView extends GetView<ProfileController> {
               children: [
                 Expanded(
                   child: Text(
-                    collection.title,
+                    controller.publicLabel(collection.title),
                     style: manrope(18, weight: FontWeight.w700, lineHeight: 20),
                   ),
                 ),
@@ -61,7 +61,7 @@ class HobbyCollectionView extends GetView<ProfileController> {
                     removing: removing,
                   ),
           ),
-          if (expanded) ...[
+          if (expanded && !controller.isVisitor.value) ...[
             SizedBox(height: 24.w),
             _ActionRow(collection: collection),
           ],

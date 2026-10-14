@@ -23,28 +23,31 @@ class ProfileAboutBody extends GetView<ProfileController> {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Row(
-            children: [
-              Expanded(
-                child: Text(
-                  AppText.myBusiness,
-                  style: manrope(18, weight: FontWeight.w700, color: AppColors.primary, lineHeight: 20),
+          child: Obx(
+            () => Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    controller.publicLabel(AppText.myBusiness),
+                    style: manrope(18, weight: FontWeight.w700, color: AppColors.primary, lineHeight: 20),
+                  ),
                 ),
-              ),
-              GestureDetector(
-                onTap: controller.addBusiness,
-                child: Row(
-                  children: [
-                    SvgPicture.asset(IconPath.profilePlus, width: 20.w, height: 20.w),
-                    SizedBox(width: 4.w),
-                    Text(
-                      AppText.addBusiness,
-                      style: manrope(12, color: AppColors.orange, lineHeight: 16),
+                if (!controller.isVisitor.value)
+                  GestureDetector(
+                    onTap: controller.addBusiness,
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(IconPath.profilePlus, width: 20.w, height: 20.w),
+                        SizedBox(width: 4.w),
+                        Text(
+                          AppText.addBusiness,
+                          style: manrope(12, color: AppColors.orange, lineHeight: 16),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-            ],
+                  ),
+              ],
+            ),
           ),
         ),
         SizedBox(height: 16.w),
@@ -60,7 +63,12 @@ class ProfileAboutBody extends GetView<ProfileController> {
             children: [
               for (var i = 0; i < controller.businesses.length; i++) ...[
                 if (i > 0) SizedBox(width: 12.w),
-                Expanded(child: _BusinessChip(business: controller.businesses[i])),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => controller.openBusiness(controller.businesses[i]),
+                    child: _BusinessChip(business: controller.businesses[i]),
+                  ),
+                ),
               ],
             ],
           ),
@@ -68,9 +76,11 @@ class ProfileAboutBody extends GetView<ProfileController> {
         SizedBox(height: 28.w),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Text(
-            AppText.myActivities,
-            style: manrope(18, weight: FontWeight.w700, color: AppColors.primary, lineHeight: 20),
+          child: Obx(
+            () => Text(
+              controller.publicLabel(AppText.myActivities),
+              style: manrope(18, weight: FontWeight.w700, color: AppColors.primary, lineHeight: 20),
+            ),
           ),
         ),
         SizedBox(height: 16.w),

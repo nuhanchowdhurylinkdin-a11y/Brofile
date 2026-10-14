@@ -71,6 +71,16 @@ class ImagePath{
   static const String albumLisa = '$_home/album_lisa.jpg';
   static const String albumEmily = '$_home/album_emily.jpg';
 
+  static const String searchHenri = '$_home/search_henri.png';
+  static const String notifShara = '$_home/notif_shara.png';
+  static const String notifJames = '$_home/notif_james.png';
+  static const String msgSarah = '$_home/msg_sarah.png';
+  static const String msgRafiul = '$_home/msg_rafiul.png';
+  static const String msgCoffee = '$_home/msg_coffee.png';
+  static const String msgLayla = '$_home/msg_layla.png';
+  static const String msgAlex = '$_home/msg_alex.png';
+  static const String chatSarah = '$_home/chat_sarah.png';
+
   static const String eventYoga = '$_home/event_yoga.jpg';
   static const String attendee1 = '$_home/attendee_1.jpg';
   static const String attendee2 = '$_home/attendee_2.jpg';
@@ -235,6 +245,14 @@ class ImagePath{
   static const String hiddenCoffee = '$_profile/hidden_coffee.png';
   static const String hiddenTravel = '$_profile/hidden_travel.png';
   static const String bizGreenleaf = '$_profile/biz_greenleaf.jpg';
+  static const String bizCoverYoga = '$_profile/biz_cover_yoga.png';
+  static const String bizLogoGreenleaf = '$_profile/biz_logo_greenleaf.png';
+  static const String bizPostSummer = '$_profile/biz_post_summer.png';
+  static const String bizProductMat = '$_profile/biz_product_mat.png';
+  static const String bizServiceYoga = '$_profile/biz_service_yoga.png';
+  static const String instructorAnna = '$_profile/instructor_anna.png';
+  static const String instructorMike = '$_profile/instructor_mike.png';
+  static const String instructorSophia = '$_profile/instructor_sophia.png';
   static const String bizPizza = '$_profile/biz_pizza.jpg';
   static const String catchRelease = '$_profile/catch_release.jpg';
   static const String profileEvent = '$_profile/event_card.jpg';

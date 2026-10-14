@@ -1,6 +1,7 @@
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/image_path.dart';
 import 'package:brofile/core/utils/helpers/app_helper.dart';
+import 'package:brofile/core/utils/helpers/profile_navigation.dart';
 import 'package:brofile/features/home/controllers/home_controller.dart';
 import 'package:brofile/features/pleasure/data/models/pleasure_models.dart';
 import 'package:brofile/routes/app_routes.dart';
@@ -193,8 +194,7 @@ class PleasureController extends GetxController {
   void openActivity(ActivityItem activity) {
     Get.toNamed(AppRoute.pleasureDetailsScreen, arguments: activity);
   }
-  void openFriend(FriendInterest friend) =>
-      AppHelperFunctions.showSnackBar(AppText.comingSoon);
+  void openFriend(FriendInterest friend) => ProfileNavigation.open(friend.name);
 
   @override
   void onClose() {

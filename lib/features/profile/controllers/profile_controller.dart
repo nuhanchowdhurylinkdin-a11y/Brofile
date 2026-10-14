@@ -2,6 +2,7 @@ import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
 import 'package:brofile/core/utils/constants/image_path.dart';
 import 'package:brofile/core/utils/helpers/app_helper.dart';
+import 'package:brofile/core/utils/helpers/profile_navigation.dart';
 import 'package:brofile/features/community/controllers/community_controller.dart';
 import 'package:brofile/features/community/data/models/community_models.dart';
 import 'package:brofile/features/home/controllers/home_controller.dart';
@@ -18,6 +19,8 @@ class ProfileController extends GetxController {
   final selectedTab = ProfileTab.about.obs;
   final activityFilter = ProfileActivityFilter.all.obs;
   final interestsExpanded = false.obs;
+  final isVisitor = false.obs;
+  final isFollowing = false.obs;
 
   final displayName = 'William'.obs;
   final username = '@William'.obs;
@@ -259,7 +262,38 @@ class ProfileController extends GetxController {
   List<CommunityItem> get myCommunities =>
       Get.find<CommunityController>().joinedCommunities;
 
+  static bool get viewingAsVisitor =>
+      Get.isRegistered<ProfileController>() && Get.find<ProfileController>().isVisitor.value;
+
+  void enterVisitor() {
+    if (isVisitor.value) return;
+    isVisitor.value = true;
+    selectedTab.value = ProfileTab.about;
+    collapseAll();
+  }
+
+  void exitVisitor() {
+    if (!isVisitor.value) return;
+    isVisitor.value = false;
+    selectedTab.value = ProfileTab.about;
+    collapseAll();
+  }
+
+  void toggleFollow() => isFollowing.toggle();
+
+  void message() => AppHelperFunctions.showSnackBar(AppText.comingSoon);
+
+  String publicLabel(String label) {
+    if (!isVisitor.value) return label;
+    return ProfileNavigation.publicLabel(label);
+  }
+
   void selectTab(ProfileTab tab) {
+    if (isVisitor.value) {
+      selectedTab.value = tab;
+      collapseAll();
+      return;
+    }
     if (tab == ProfileTab.about) {
       selectedTab.value = ProfileTab.about;
       collapseAll();
@@ -353,7 +387,17 @@ class ProfileController extends GetxController {
 
   void addBusiness() => AppHelperFunctions.showSnackBar(AppText.comingSoon);
 
+  void openBusiness(ProfileBusiness business) {
+    if (business.name.contains('GreenLeaf') || business.name.contains('Pizza')) {
+      ProfileNavigation.openBusiness(visitor: isVisitor.value);
+      return;
+    }
+    AppHelperFunctions.showSnackBar(AppText.comingSoon);
+  }
+
   void openMyCircle() => Get.toNamed(AppRoute.myCircleScreen);
+
+  void openAspirations() => Get.toNamed(AppRoute.aspirationsScreen);
 
   void openDetails(String name) =>
       AppHelperFunctions.showSnackBar(AppText.comingSoon);

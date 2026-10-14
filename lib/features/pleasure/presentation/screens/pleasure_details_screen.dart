@@ -1,6 +1,7 @@
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
+import 'package:brofile/core/utils/helpers/profile_navigation.dart';
 import 'package:brofile/features/home/presentation/widgets/home_text.dart';
 import 'package:brofile/features/pleasure/controllers/pleasure_details_controller.dart';
 import 'package:brofile/features/pleasure/presentation/widgets/activity_cards.dart';
@@ -118,6 +119,7 @@ class PleasureDetailsScreen extends GetView<PleasureDetailsController> {
                       activityHost: activity.host,
                       avatar: activity.hostAvatar,
                       onMessage: controller.messageHost,
+                      onProfile: () => ProfileNavigation.open(activity.host),
                     ),
                     SizedBox(height: 24.w),
                     Text(
@@ -194,40 +196,48 @@ class _HostRow extends StatelessWidget {
     required this.activityHost,
     required this.avatar,
     required this.onMessage,
+    required this.onProfile,
   });
 
   final String activityHost;
   final String avatar;
   final VoidCallback onMessage;
+  final VoidCallback onProfile;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        ClipOval(
-          child: Image.asset(avatar, width: 40.w, height: 40.w, fit: BoxFit.cover),
+        GestureDetector(
+          onTap: onProfile,
+          child: ClipOval(
+            child: Image.asset(avatar, width: 40.w, height: 40.w, fit: BoxFit.cover),
+          ),
         ),
         SizedBox(width: 8.w),
         Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                AppText.hostedBy,
-                style: manrope(14, weight: FontWeight.w700, lineHeight: 20),
-              ),
-              Text(
-                activityHost,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: manrope(
-                  16,
-                  weight: FontWeight.w700,
-                  color: AppColors.primary,
-                  lineHeight: 22,
+          child: GestureDetector(
+            onTap: onProfile,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  AppText.hostedBy,
+                  style: manrope(14, weight: FontWeight.w700, lineHeight: 20),
                 ),
-              ),
-            ],
+                Text(
+                  activityHost,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: manrope(
+                    16,
+                    weight: FontWeight.w700,
+                    color: AppColors.primary,
+                    lineHeight: 22,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         GestureDetector(

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:brofile/core/utils/constants/app_texts.dart';
+import 'package:brofile/core/utils/helpers/profile_navigation.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
 import 'package:brofile/features/discover/controllers/recycle_product_details_controller.dart';
@@ -313,7 +314,10 @@ class _SellerCard extends StatelessWidget {
           SizedBox(height: 12.w),
           Padding(
             padding: EdgeInsets.fromLTRB(12.w, 0, 12.w, 16.w),
-            child: Row(
+            child: GestureDetector(
+              onTap: () => ProfileNavigation.open(product.sellerName ?? ''),
+              behavior: HitTestBehavior.opaque,
+              child: Row(
               children: [
                 ClipOval(
                   child: Image.asset(
@@ -344,6 +348,7 @@ class _SellerCard extends StatelessWidget {
                   ],
                 ),
               ],
+            ),
             ),
           ),
         ],

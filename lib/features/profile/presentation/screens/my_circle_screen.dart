@@ -3,7 +3,9 @@ import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
 import 'package:brofile/features/home/presentation/widgets/home_text.dart';
 import 'package:brofile/features/pleasure/presentation/widgets/pleasure_sub_header.dart';
+import 'package:brofile/core/utils/helpers/profile_navigation.dart';
 import 'package:brofile/features/profile/controllers/my_circle_controller.dart';
+import 'package:brofile/features/profile/controllers/profile_controller.dart';
 import 'package:brofile/features/profile/data/models/profile_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -57,29 +59,31 @@ class MyCircleScreen extends GetView<MyCircleController> {
                         group: CircleGroup.friends,
                       ),
                     ],
-                    SizedBox(height: 24.w),
-                    GestureDetector(
-                      onTap: controller.openAdd,
-                      child: Container(
-                        height: 44.w,
-                        decoration: BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(20.r),
-                        ),
-                        alignment: Alignment.center,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SvgPicture.asset(IconPath.plusWhite, width: 20.w, height: 20.w),
-                            SizedBox(width: 6.w),
-                            Text(
-                              AppText.addToCircle,
-                              style: manrope(16, weight: FontWeight.w600, color: Colors.white, lineHeight: 24),
-                            ),
-                          ],
+                    if (!ProfileController.viewingAsVisitor) ...[
+                      SizedBox(height: 24.w),
+                      GestureDetector(
+                        onTap: controller.openAdd,
+                        child: Container(
+                          height: 44.w,
+                          decoration: BoxDecoration(
+                            color: AppColors.primary,
+                            borderRadius: BorderRadius.circular(20.r),
+                          ),
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SvgPicture.asset(IconPath.plusWhite, width: 20.w, height: 20.w),
+                              SizedBox(width: 6.w),
+                              Text(
+                                AppText.addToCircle,
+                                style: manrope(16, weight: FontWeight.w600, color: Colors.white, lineHeight: 24),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ],
                 );
               }),
@@ -193,7 +197,10 @@ class _MemberRow extends GetView<MyCircleController> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return GestureDetector(
+      onTap: () => ProfileNavigation.open(member.name),
+      behavior: HitTestBehavior.opaque,
+      child: Row(
       children: [
         Stack(
           children: [
@@ -250,6 +257,7 @@ class _MemberRow extends GetView<MyCircleController> {
           ),
         ),
       ],
+    ),
     );
   }
 }

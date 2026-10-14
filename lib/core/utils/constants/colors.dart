@@ -93,6 +93,17 @@ class AppColors {
   static const Color warning100 = Color(0xFFFEF0C7);
   static const Color sellChipBg = Color(0xFFDCFAE6);
   static const Color sellChipText = Color(0xFF067647);
+  static const Color chatOutgoing = Color(0xFFE7F7EF);
+  static const Color inboxOnline = Color(0xFF10B981);
+  static const Color communityIconBg = Color(0xFFDCEDE5);
+  static const Color studioAvatarBg = Color(0xFF1A4D33);
+  static const Color eventIconBg = Color(0xFFF4F1FE);
+  static const Color tabSelected = Color(0xFF1B4332);
+  static const Color tabMuted = Color(0xFF6B7280);
+  static const Color inboxName = Color(0xFF111827);
+  static const Color chatBody = Color(0xFF1F2937);
+  static const Color dateChip = Color(0xFFF3F4F6);
+  static const Color composerBorder = Color(0xFFE5E7EB);
 
   // Background Colors
   static const Color backgroundLight = Color(0xFFF9FAFB); // Light neutral for clean look

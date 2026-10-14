@@ -215,6 +215,13 @@ class EventModel {
     required this.attendees,
     required this.extraAttendees,
     this.category = '',
+    this.subtitle = '',
+    this.tag = '',
+    this.schedule = '',
+    this.capacity = '',
+    this.price = '',
+    this.about = '',
+    this.achievements = const [],
   });
 
   final String day;
@@ -226,6 +233,13 @@ class EventModel {
   final List<String> attendees;
   final int extraAttendees;
   final String category;
+  final String subtitle;
+  final String tag;
+  final String schedule;
+  final String capacity;
+  final String price;
+  final String about;
+  final List<String> achievements;
   final isInterested = false.obs;
 }
 

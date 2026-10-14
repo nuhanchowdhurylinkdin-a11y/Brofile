@@ -36,23 +36,26 @@ class ProfileHero extends GetView<ProfileController> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                Positioned(
-                  top: 12.w,
-                  right: 12.w,
-                  child: Row(
-                    children: [
-                      _CoverIcon(
-                        icon: IconPath.profileCoverEdit,
-                        onTap: controller.openAboutMe,
-                      ),
-                      SizedBox(width: 11.w),
-                      _CoverIcon(
-                        icon: IconPath.addPhotoCamera,
-                        onTap: controller.openAboutMe,
-                      ),
-                    ],
-                  ),
-                ),
+                Obx(() {
+                  if (controller.isVisitor.value) return const SizedBox.shrink();
+                  return Positioned(
+                    top: 12.w,
+                    right: 12.w,
+                    child: Row(
+                      children: [
+                        _CoverIcon(
+                          icon: IconPath.profileCoverEdit,
+                          onTap: controller.openAboutMe,
+                        ),
+                        SizedBox(width: 11.w),
+                        _CoverIcon(
+                          icon: IconPath.addPhotoCamera,
+                          onTap: controller.openAboutMe,
+                        ),
+                      ],
+                    ),
+                  );
+                }),
                 Positioned(
                   left: 0,
                   right: 0,
@@ -97,25 +100,23 @@ class ProfileHero extends GetView<ProfileController> {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: controller.openAboutMe,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Obx(
-                  () => Text(
+          Obx(
+            () => GestureDetector(
+              onTap: controller.isVisitor.value ? null : controller.openAboutMe,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
                     controller.displayName.value,
                     style: manrope(16, weight: FontWeight.w600, color: AppColors.primary, lineHeight: 24),
                   ),
-                ),
-                SizedBox(width: 4.w),
-                Obx(
-                  () => Text(
+                  SizedBox(width: 4.w),
+                  Text(
                     controller.username.value,
                     style: manrope(12, color: AppColors.neutral500, lineHeight: 16),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Padding(
@@ -175,6 +176,51 @@ class ProfileHero extends GetView<ProfileController> {
               ],
             ),
           ),
+          Obx(() {
+            if (!controller.isVisitor.value) return const SizedBox.shrink();
+            return Padding(
+              padding: EdgeInsets.fromLTRB(12.w, 0, 12.w, 20.w),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: controller.toggleFollow,
+                      child: Container(
+                        height: 44.w,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: AppColors.orange,
+                          borderRadius: BorderRadius.circular(20.r),
+                        ),
+                        child: Text(
+                          controller.isFollowing.value ? AppText.following : AppText.follow,
+                          style: manrope(16, weight: FontWeight.w600, color: Colors.white, lineHeight: 24),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 16.w),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: controller.message,
+                      child: Container(
+                        height: 44.w,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.r),
+                          border: Border.all(color: AppColors.primary, width: 1.5),
+                        ),
+                        child: Text(
+                          AppText.message,
+                          style: manrope(16, weight: FontWeight.w600, color: AppColors.neutral700, lineHeight: 24),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }),
         ],
       ),
     );

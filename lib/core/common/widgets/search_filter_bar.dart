@@ -12,11 +12,13 @@ class SearchFilterBar extends StatelessWidget {
     required this.controller,
     required this.onChanged,
     required this.onFilter,
+    this.focusNode,
   });
 
   final TextEditingController controller;
   final ValueChanged<String> onChanged;
   final VoidCallback onFilter;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,7 @@ class SearchFilterBar extends StatelessWidget {
                   Expanded(
                     child: TextField(
                       controller: controller,
+                      focusNode: focusNode,
                       onChanged: onChanged,
                       textInputAction: TextInputAction.search,
                       cursorColor: AppColors.primary,

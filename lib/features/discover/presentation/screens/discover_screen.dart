@@ -122,7 +122,7 @@ class _HubBody extends GetView<DiscoverController> {
                       final business = businesses[index];
                       return FeaturedBusinessCard(
                         business: business,
-                        onTap: () => controller.openDetails(business.name),
+                        onTap: () => controller.openBusinessProfile(business.name),
                         onFavorite: () => controller.toggleFavorite(business),
                       );
                     },

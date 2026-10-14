@@ -138,13 +138,13 @@ class _ProductInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 72.w,
       padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text.rich(

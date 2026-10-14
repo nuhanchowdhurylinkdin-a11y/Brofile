@@ -1,4 +1,5 @@
 import 'package:brofile/core/common/widgets/avatar_group.dart';
+import 'package:brofile/core/utils/helpers/profile_navigation.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
@@ -430,7 +431,9 @@ class _MemberRow extends GetView<CommunityDetailsController> {
       padding: EdgeInsets.symmetric(vertical: 8.w),
       child: Row(
         children: [
-          Stack(
+          GestureDetector(
+            onTap: () => ProfileNavigation.open(member.name),
+            child: Stack(
             clipBehavior: Clip.none,
             children: [
               ClipOval(
@@ -451,15 +454,19 @@ class _MemberRow extends GetView<CommunityDetailsController> {
                   ),
                 ),
             ],
+            ),
           ),
           SizedBox(width: 12.w),
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(member.name, style: manrope(15, weight: FontWeight.w700, color: AppColors.primary, lineHeight: 22)),
-                Text(member.handle, style: manrope(13, color: const Color(0xFF9A9A9A), lineHeight: 20)),
-              ],
+            child: GestureDetector(
+              onTap: () => ProfileNavigation.open(member.name),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(member.name, style: manrope(15, weight: FontWeight.w700, color: AppColors.primary, lineHeight: 22)),
+                  Text(member.handle, style: manrope(13, color: const Color(0xFF9A9A9A), lineHeight: 20)),
+                ],
+              ),
             ),
           ),
           if (showFollow)

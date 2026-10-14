@@ -2,6 +2,7 @@ import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/image_path.dart';
 import 'package:brofile/core/utils/helpers/app_helper.dart';
+import 'package:brofile/core/utils/helpers/profile_navigation.dart';
 import 'package:brofile/routes/app_routes.dart';
 import 'package:brofile/features/discover/data/models/discover_models.dart';
 import 'package:brofile/features/home/controllers/home_controller.dart';
@@ -578,11 +579,23 @@ class DiscoverController extends GetxController {
       month: 'MAY',
       title: 'Weekend Yoga Workshop',
       time: 'Friday, 7:00 PM',
-      location: 'Greenleaf Yoga Studio. Miami',
+      location: AppText.greenleafMiamiFlorida,
       image: ImagePath.eventYoga,
       attendees: _eventAttendees,
       extraAttendees: 5,
       category: 'Fitness',
+      subtitle: AppText.morningYogaTagline,
+      tag: AppText.fitnessYoga,
+      schedule: AppText.fridayYogaHours,
+      capacity: AppText.max25Participants,
+      price: AppText.eventFee80,
+      about: AppText.weekendYogaAbout,
+      achievements: const [
+        AppText.breathingTechniques,
+        AppText.mindfulnessRelaxation,
+        AppText.yogaFlowStrength,
+        AppText.guidedMeditation,
+      ],
     ),
     EventModel(
       day: '25',
@@ -806,8 +819,15 @@ class DiscoverController extends GetxController {
 
   void openFilter() => AppHelperFunctions.showSnackBar(AppText.comingSoon);
 
-  void openDetails(String name) =>
-      AppHelperFunctions.showSnackBar(AppText.comingSoon);
+  void openDetails(String name) {
+    if (ProfileNavigation.isBusiness(name)) {
+      openBusinessProfile();
+      return;
+    }
+    AppHelperFunctions.showSnackBar(AppText.comingSoon);
+  }
+
+  void openBusinessProfile([String? _]) => ProfileNavigation.openBusiness(visitor: true);
 
   void openRecyclerProduct(ProductModel product) =>
       Get.toNamed(AppRoute.recycleProductDetailsScreen, arguments: product);

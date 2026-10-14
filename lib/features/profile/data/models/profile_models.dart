@@ -189,3 +189,103 @@ class CircleMember {
   final String handle;
   final bool online;
 }
+
+enum AspirationKind { project, hope, dream }
+
+enum AspirationStatus { inProgress, planning, ideaStage }
+
+enum BusinessProfileTab { posts, products, services, events, about }
+
+class BusinessOffer {
+  const BusinessOffer({required this.title, required this.subtitle});
+
+  final String title;
+  final String subtitle;
+}
+
+class BusinessInstructor {
+  const BusinessInstructor({
+    required this.name,
+    required this.role,
+    required this.bio,
+    required this.image,
+  });
+
+  final String name;
+  final String role;
+  final String bio;
+  final String image;
+}
+
+class BusinessHour {
+  const BusinessHour({required this.days, required this.hours});
+
+  final String days;
+  final String hours;
+}
+
+class BusinessInfoRow {
+  const BusinessInfoRow({required this.label, required this.value});
+
+  final String label;
+  final String value;
+}
+
+class BusinessLink {
+  const BusinessLink({required this.icon, required this.label});
+
+  final String icon;
+  final String label;
+}
+
+class BusinessCatalogDetails {
+  const BusinessCatalogDetails({
+    required this.header,
+    required this.name,
+    required this.image,
+    required this.tag,
+    required this.subtitle,
+    required this.price,
+    required this.sectionTitle,
+    required this.body,
+    required this.cta,
+    this.stock,
+    this.info = const [],
+  });
+
+  final String header;
+  final String name;
+  final String image;
+  final String tag;
+  final String subtitle;
+  final String price;
+  final String sectionTitle;
+  final String body;
+  final String cta;
+  final String? stock;
+  final List<BusinessInfoRow> info;
+}
+
+class AspirationItem {
+  AspirationItem({
+    required this.id,
+    required this.kind,
+    required this.title,
+    required this.icon,
+    required this.iconBg,
+    this.status,
+    this.target = '',
+    this.description = '',
+    this.notes = '',
+  });
+
+  final String id;
+  final AspirationKind kind;
+  String title;
+  String icon;
+  int iconBg;
+  AspirationStatus? status;
+  String target;
+  String description;
+  String notes;
+}

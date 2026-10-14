@@ -104,7 +104,7 @@ class _InterestSection extends GetView<ProfileController> {
               children: [
                 Expanded(
                   child: Text(
-                    AppText.myInterest,
+                    controller.publicLabel(AppText.myInterest),
                     style: manrope(18, weight: FontWeight.w700, lineHeight: 20),
                   ),
                 ),
@@ -126,7 +126,7 @@ class _InterestSection extends GetView<ProfileController> {
               runSpacing: 12.w,
               children: [
                 for (final interest in visible) _InterestChip(interest: interest),
-                if (expanded)
+                if (expanded && !controller.isVisitor.value)
                   GestureDetector(
                     onTap: controller.addBusiness,
                     child: const _InterestChip(

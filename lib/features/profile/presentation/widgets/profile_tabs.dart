@@ -58,18 +58,20 @@ class ProfileTabs extends GetView<ProfileController> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    width: 118.w,
-                    child: _TabChip(
-                      label: AppText.myCircle,
-                      icon: IconPath.profileCircle,
-                      iconBg: const Color(0xFFFEE4E2),
-                      selected: false,
-                      expand: false,
-                      onTap: controller.openMyCircle,
+                  if (!controller.isVisitor.value) ...[
+                    SizedBox(
+                      width: 118.w,
+                      child: _TabChip(
+                        label: AppText.myCircle,
+                        icon: IconPath.profileCircle,
+                        iconBg: const Color(0xFFFEE4E2),
+                        selected: false,
+                        expand: false,
+                        onTap: controller.openMyCircle,
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 8.w),
+                    SizedBox(width: 8.w),
+                  ],
                   SizedBox(
                     width: 118.w,
                     child: _TabChip(
@@ -78,7 +80,7 @@ class ProfileTabs extends GetView<ProfileController> {
                       iconBg: const Color(0xFFD1E9FF),
                       selected: false,
                       expand: false,
-                      onTap: controller.addBusiness,
+                      onTap: controller.openAspirations,
                     ),
                   ),
                 ],

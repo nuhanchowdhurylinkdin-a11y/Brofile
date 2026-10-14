@@ -1,7 +1,9 @@
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/image_path.dart';
 import 'package:brofile/core/utils/helpers/app_helper.dart';
+import 'package:brofile/core/utils/helpers/profile_navigation.dart';
 import 'package:brofile/features/home/data/models/home_models.dart';
+import 'package:brofile/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -353,12 +355,11 @@ class HomeController extends GetxController {
 
   void toggleInterested(EventModel event) => event.isInterested.toggle();
 
-  // TODO: route to the matching screens once they exist.
-  void openSearch() => AppHelperFunctions.showSnackBar(AppText.comingSoon);
-  void openMessages() => AppHelperFunctions.showSnackBar(AppText.comingSoon);
-  void openNotifications() => AppHelperFunctions.showSnackBar(AppText.comingSoon);
+  void openSearch() => Get.toNamed(AppRoute.searchScreen);
+  void openMessages() => Get.toNamed(AppRoute.messagesScreen);
+  void openNotifications() => Get.toNamed(AppRoute.notificationsInboxScreen);
   void openSeeAll(String section) => AppHelperFunctions.showSnackBar(AppText.comingSoon);
-  void openProfile(String name) => AppHelperFunctions.showSnackBar(AppText.comingSoon);
+  void openProfile(String name) => ProfileNavigation.open(name);
   void openDetails(String title) => AppHelperFunctions.showSnackBar(AppText.comingSoon);
 
   Future<void> refreshFeed() async {
