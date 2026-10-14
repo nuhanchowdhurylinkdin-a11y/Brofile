@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
@@ -22,15 +23,13 @@ class AddHobbyScreen extends GetView<AddHobbyController> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(
-              title: controller.screenTitle,
-              onBack: controller.close,
-              showClose: false,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
+        body: HideOnScroll(
+          header: PleasureSubHeader(
+            title: controller.screenTitle,
+            onBack: controller.close,
+            showClose: false,
+          ),
+          body: SingleChildScrollView(
                 keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                 padding: EdgeInsets.fromLTRB(16.w, 16.w, 16.w, 24.w),
                 child: Column(
@@ -249,8 +248,6 @@ class AddHobbyScreen extends GetView<AddHobbyController> {
                   ],
                 ),
               ),
-            ),
-          ],
         ),
       ),
     );

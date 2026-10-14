@@ -1,7 +1,7 @@
 import 'package:brofile/core/utils/constants/app_texts.dart';
-import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/image_path.dart';
 import 'package:brofile/core/utils/helpers/app_helper.dart';
+import 'package:brofile/core/utils/helpers/app_platform.dart';
 import 'package:brofile/features/home/controllers/home_controller.dart';
 import 'package:brofile/features/pleasure/controllers/pleasure_controller.dart';
 import 'package:brofile/features/pleasure/data/models/pleasure_models.dart';
@@ -98,22 +98,16 @@ class CreatePleasureController extends GetxController {
   }
 
   Future<void> pickDate() async {
-    final picked = await showDatePicker(
-      context: Get.context!,
+    final picked = await AppPlatform.pickDate(
       initialDate: date.value ?? DateTime.now(),
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(const Duration(days: 365)),
-      builder: _pickerTheme,
     );
     if (picked != null) date.value = picked;
   }
 
   Future<void> pickTime() async {
-    final picked = await showTimePicker(
-      context: Get.context!,
-      initialTime: time.value ?? TimeOfDay.now(),
-      builder: _pickerTheme,
-    );
+    final picked = await AppPlatform.pickTime(initialTime: time.value ?? TimeOfDay.now());
     if (picked != null) time.value = picked;
   }
 
@@ -174,43 +168,7 @@ class CreatePleasureController extends GetxController {
   }
 
   Future<String?> _pickOption(List<String> options) {
-    return Get.bottomSheet<String>(
-      Material(
-        color: Colors.white,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-        child: SafeArea(
-          top: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(height: 12),
-              Container(
-                width: 40,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: AppColors.neutral200,
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              for (final option in options)
-                ListTile(
-                  title: Text(option),
-                  onTap: () => Get.back(result: option),
-                ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _pickerTheme(BuildContext context, Widget? child) {
-    return Theme(
-      data: Theme.of(context).copyWith(
-        colorScheme: const ColorScheme.light(primary: AppColors.primary),
-      ),
-      child: child!,
-    );
+    return AppPlatform.showOptions(options);
   }
 
   @override

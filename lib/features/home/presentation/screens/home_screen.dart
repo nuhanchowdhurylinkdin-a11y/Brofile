@@ -1,5 +1,7 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
+import 'package:brofile/core/utils/helpers/app_platform.dart';
 import 'package:brofile/features/home/controllers/home_controller.dart';
 import 'package:brofile/features/home/data/models/home_models.dart';
 import 'package:brofile/features/home/presentation/widgets/category_chips.dart';
@@ -32,8 +34,7 @@ class HomeScreen extends GetView<HomeController> {
         color: Colors.white,
         child: Stack(
           children: [
-            RefreshIndicator(
-              color: AppColors.primary,
+            AppPlatform.pullToRefresh(
               edgeOffset: headerBottom,
               onRefresh: controller.refreshFeed,
               child: Obx(() {
@@ -53,7 +54,7 @@ class HomeScreen extends GetView<HomeController> {
                 );
               }),
             ),
-            const Positioned(top: 0, left: 0, right: 0, child: HomeHeader()),
+            SlidingHomeHeader(scrollController: controller.scrollController),
           ],
         ),
       ),

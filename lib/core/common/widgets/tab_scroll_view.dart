@@ -1,10 +1,12 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
+import 'package:brofile/core/utils/helpers/app_platform.dart';
 import 'package:brofile/features/home/presentation/widgets/home_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-/// Scrollable tab body that slides under the pinned, blurred [HomeHeader].
+/// Scrollable tab body whose [HomeHeader] hides on scroll down and slides back up.
 class TabScrollView extends StatelessWidget {
   const TabScrollView({
     super.key,
@@ -32,8 +34,7 @@ class TabScrollView extends StatelessWidget {
         color: background,
         child: Stack(
           children: [
-            RefreshIndicator(
-              color: AppColors.primary,
+            AppPlatform.pullToRefresh(
               edgeOffset: headerBottom,
               onRefresh: onRefresh,
               child: ListView(
@@ -46,11 +47,9 @@ class TabScrollView extends StatelessWidget {
                 children: children,
               ),
             ),
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: HomeHeader(onLogoTap: onLogoTap),
+            SlidingHomeHeader(
+              scrollController: scrollController,
+              onLogoTap: onLogoTap,
             ),
           ],
         ),

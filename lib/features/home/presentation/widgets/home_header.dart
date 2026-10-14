@@ -9,17 +9,20 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class HomeHeader extends GetView<HomeController> {
-  const HomeHeader({super.key, this.onLogoTap});
+  const HomeHeader({super.key, this.onLogoTap, this.includeTopInset = true});
 
   /// Defaults to scrolling the home feed to the top.
   final VoidCallback? onLogoTap;
+
+  /// When false, only the toolbar is built so a pinned status-bar sliver can sit above it.
+  final bool includeTopInset;
 
   /// Height below the status bar.
   static double get contentHeight => 54.w;
 
   @override
   Widget build(BuildContext context) {
-    final topInset = MediaQuery.paddingOf(context).top;
+    final topInset = includeTopInset ? MediaQuery.paddingOf(context).top : 0.0;
 
     return ClipRect(
       child: BackdropFilter(

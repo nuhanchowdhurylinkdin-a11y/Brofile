@@ -1,3 +1,4 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
@@ -23,16 +24,12 @@ class BusinessCatalogDetailsScreen extends StatelessWidget {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(title: details.header, onBack: Get.back),
-            Expanded(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.fromLTRB(16.w, 16.w, 16.w, 32.w),
-                child: BusinessCatalogDetailsView(details: details),
-              ),
-            ),
-          ],
+        body: HideOnScroll(
+          header: PleasureSubHeader(title: details.header, onBack: Get.back),
+          body: SingleChildScrollView(
+            padding: EdgeInsets.fromLTRB(16.w, 16.w, 16.w, 32.w),
+            child: BusinessCatalogDetailsView(details: details),
+          ),
         ),
       ),
     );

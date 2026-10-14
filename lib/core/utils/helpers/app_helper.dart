@@ -1,3 +1,4 @@
+import 'package:brofile/core/utils/helpers/app_platform.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -10,22 +11,8 @@ class AppHelperFunctions{
   );
  }
 
- static void showAlert(String title, String message) {
-  showDialog(
-   context: Get.context!,
-   builder: (BuildContext context) {
-    return AlertDialog(
-     title: Text(title),
-     content: Text(message),
-     actions: [
-      TextButton(
-       onPressed: () => Navigator.of(context).pop(),
-       child: const Text('OK'),
-      ),
-     ],
-    );
-   },
-  );
+ static Future<void> showAlert(String title, String message) {
+  return AppPlatform.showAlert(title: title, message: message);
  }
 
  static void navigateToScreen(BuildContext context, Widget screen) {
