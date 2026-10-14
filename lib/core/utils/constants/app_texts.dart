@@ -423,6 +423,8 @@ class AppText{
   static const String french = 'French';
   static const String profileSaved = 'Profile updated.';
   static const String cancel = 'Cancel';
+  static const String done = 'Done';
+  static const String ok = 'OK';
   static const String website = 'Website';
   static const String currentPassword = 'Current Password';
   static const String confirmNewPassword = 'Confirm New Password';

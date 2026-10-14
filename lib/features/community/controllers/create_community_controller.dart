@@ -1,7 +1,7 @@
 import 'package:brofile/core/utils/constants/app_texts.dart';
-import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/image_path.dart';
 import 'package:brofile/core/utils/helpers/app_helper.dart';
+import 'package:brofile/core/utils/helpers/app_platform.dart';
 import 'package:brofile/features/community/controllers/community_controller.dart';
 import 'package:brofile/features/community/data/models/community_models.dart';
 import 'package:brofile/features/home/controllers/home_controller.dart';
@@ -143,34 +143,7 @@ class CreateCommunityController extends GetxController {
   }
 
   Future<String?> _pickOption(List<String> options) {
-    return Get.bottomSheet<String>(
-      Material(
-        color: Colors.white,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-        child: SafeArea(
-          top: false,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(height: 12),
-              Container(
-                width: 40,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: AppColors.neutral200,
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              for (final option in options)
-                ListTile(
-                  title: Text(option),
-                  onTap: () => Get.back(result: option),
-                ),
-            ],
-          ),
-        ),
-      ),
-    );
+    return AppPlatform.showOptions(options);
   }
 
   @override

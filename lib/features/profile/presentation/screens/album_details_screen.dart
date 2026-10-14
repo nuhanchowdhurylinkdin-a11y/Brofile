@@ -1,9 +1,11 @@
 import 'dart:io';
 
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
 import 'package:brofile/core/utils/helpers/app_helper.dart';
+import 'package:brofile/core/utils/helpers/app_platform.dart';
 import 'package:brofile/features/home/presentation/widgets/home_text.dart';
 import 'package:brofile/features/profile/controllers/album_details_controller.dart';
 import 'package:brofile/features/profile/controllers/profile_controller.dart';
@@ -22,11 +24,9 @@ class AlbumDetailsScreen extends GetView<AlbumDetailsController> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            const _AlbumHeader(),
-            Expanded(
-              child: SingleChildScrollView(
+        body: HideOnScroll(
+          header: const _AlbumHeader(),
+          body: SingleChildScrollView(
                 padding: EdgeInsets.fromLTRB(16.w, 16.w, 16.w, 32.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,8 +65,6 @@ class AlbumDetailsScreen extends GetView<AlbumDetailsController> {
                   ],
                 ),
               ),
-            ),
-          ],
         ),
       ),
     );
@@ -91,15 +89,7 @@ class _AlbumHeader extends GetView<AlbumDetailsController> {
           ),
             child: Row(
               children: [
-                GestureDetector(
-                  onTap: controller.close,
-                  behavior: HitTestBehavior.opaque,
-                  child: SvgPicture.asset(
-                    IconPath.pleasureBack,
-                    width: 24.w,
-                    height: 24.w,
-                  ),
-                ),
+                AppBackButton(onTap: controller.close),
                 Expanded(
                   child: Column(
                     children: [

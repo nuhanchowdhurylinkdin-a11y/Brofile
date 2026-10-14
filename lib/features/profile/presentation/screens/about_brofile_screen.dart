@@ -17,7 +17,7 @@ class AboutBrofileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SettingsSubScaffold(
       title: AppText.aboutBrofile,
-      showClose: true,
+      showClose: false,
       child: ListView(
         padding: EdgeInsets.fromLTRB(16.w, 24.w, 16.w, 32.w),
         children: [

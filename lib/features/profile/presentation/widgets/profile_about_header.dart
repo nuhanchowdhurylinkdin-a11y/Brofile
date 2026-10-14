@@ -1,6 +1,7 @@
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
+import 'package:brofile/core/utils/helpers/app_platform.dart';
 import 'package:brofile/features/home/presentation/widgets/home_text.dart';
 import 'package:brofile/features/profile/controllers/profile_controller.dart';
 import 'package:flutter/material.dart';
@@ -23,11 +24,7 @@ class ProfileAboutHeader extends GetView<ProfileController> {
           padding: EdgeInsets.fromLTRB(24.w, 12.w, 24.w, 12.w),
           child: Row(
             children: [
-              GestureDetector(
-                onTap: Get.back,
-                behavior: HitTestBehavior.opaque,
-                child: SvgPicture.asset(IconPath.pleasureBack, width: 24.w, height: 24.w),
-              ),
+              AppBackButton(onTap: Get.back),
               Expanded(
                 child: Text(
                   title,
