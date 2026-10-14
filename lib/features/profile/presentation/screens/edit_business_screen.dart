@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
@@ -23,17 +24,13 @@ class EditBusinessScreen extends StatelessWidget {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(title: AppText.editBusinessProfile, onBack: Get.back),
-            Expanded(
-              child: SingleChildScrollView(
-                keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-                padding: EdgeInsets.fromLTRB(16.w, 16.w, 16.w, 32.w),
-                child: const EditBusinessForm(),
-              ),
-            ),
-          ],
+        body: HideOnScroll(
+          header: PleasureSubHeader(title: AppText.editBusinessProfile, onBack: Get.back),
+          body: SingleChildScrollView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+            padding: EdgeInsets.fromLTRB(16.w, 16.w, 16.w, 32.w),
+            child: const EditBusinessForm(),
+          ),
         ),
       ),
     );

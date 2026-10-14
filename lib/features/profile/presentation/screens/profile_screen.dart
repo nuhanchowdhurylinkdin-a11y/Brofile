@@ -1,3 +1,4 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/common/widgets/tab_scroll_view.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/features/pleasure/presentation/widgets/pleasure_sub_header.dart';
@@ -71,17 +72,15 @@ class _VisitorProfileViewState extends State<_VisitorProfileView> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            Obx(
-              () => PleasureSubHeader(
-                title: _profile.displayName.value,
-                onBack: Get.back,
-                showClose: false,
-              ),
+        body: HideOnScroll(
+          header: Obx(
+            () => PleasureSubHeader(
+              title: _profile.displayName.value,
+              onBack: Get.back,
+              showClose: false,
             ),
-            Expanded(
-              child: ListView(
+          ),
+          body: ListView(
                 controller: _scroll,
                 padding: EdgeInsets.only(top: 8.w, bottom: 32.w),
                 children: [
@@ -98,8 +97,6 @@ class _VisitorProfileViewState extends State<_VisitorProfileView> {
                   }),
                 ],
               ),
-            ),
-          ],
         ),
       ),
     );

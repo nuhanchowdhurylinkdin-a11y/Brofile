@@ -1,3 +1,4 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
@@ -20,47 +21,43 @@ class NotificationsScreen extends GetView<NotificationsController> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(title: AppText.notifications, onBack: Get.back),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: const _NotificationTabs(),
-            ),
-            Expanded(
-              child: Obx(() {
-                final items = controller.visible;
-                return ListView(
-                  padding: EdgeInsets.fromLTRB(16.w, 28.w, 16.w, 32.w),
+        body: HideOnScroll(
+          header: PleasureSubHeader(title: AppText.notifications, onBack: Get.back),
+          pinned: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: const _NotificationTabs(),
+          ),
+          body: Obx(() {
+            final items = controller.visible;
+            return ListView(
+              padding: EdgeInsets.fromLTRB(16.w, 28.w, 16.w, 32.w),
+              children: [
+                Row(
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          AppText.today,
-                          style: manrope(14, weight: FontWeight.w600, lineHeight: 20),
-                        ),
-                        const Spacer(),
-                        GestureDetector(
-                          onTap: controller.markAllRead,
-                          child: Text(
-                            AppText.markAllAsRead,
-                            style: manrope(
-                              14,
-                              weight: FontWeight.w500,
-                              color: AppColors.primary,
-                              lineHeight: 20,
-                            ),
-                          ),
-                        ),
-                      ],
+                    Text(
+                      AppText.today,
+                      style: manrope(14, weight: FontWeight.w600, lineHeight: 20),
                     ),
-                    SizedBox(height: 28.w),
-                    ...items.map((item) => _NotificationTile(item: item)),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: controller.markAllRead,
+                      child: Text(
+                        AppText.markAllAsRead,
+                        style: manrope(
+                          14,
+                          weight: FontWeight.w500,
+                          color: AppColors.primary,
+                          lineHeight: 20,
+                        ),
+                      ),
+                    ),
                   ],
-                );
-              }),
-            ),
-          ],
+                ),
+                SizedBox(height: 28.w),
+                ...items.map((item) => _NotificationTile(item: item)),
+              ],
+            );
+          }),
         ),
       ),
     );

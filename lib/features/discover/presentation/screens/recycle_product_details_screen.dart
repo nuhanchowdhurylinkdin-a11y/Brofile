@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/helpers/profile_navigation.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
@@ -30,14 +31,12 @@ class RecycleProductDetailsScreen extends GetView<RecycleProductDetailsControlle
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(
-              title: AppText.productDetails,
-              onBack: controller.close,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
+        body: HideOnScroll(
+          header: PleasureSubHeader(
+            title: AppText.productDetails,
+            onBack: controller.close,
+          ),
+          body: SingleChildScrollView(
                 padding: EdgeInsets.fromLTRB(16.w, 16.w, 16.w, 24.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -226,8 +225,6 @@ class RecycleProductDetailsScreen extends GetView<RecycleProductDetailsControlle
                   ],
                 ),
               ),
-            ),
-          ],
         ),
       ),
     );
