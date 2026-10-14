@@ -1,3 +1,4 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
@@ -27,11 +28,9 @@ class SettingsSubScaffold extends StatelessWidget {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(title: title, onBack: Get.back, showClose: showClose),
-            Expanded(child: child),
-          ],
+        body: HideOnScroll(
+          header: PleasureSubHeader(title: title, onBack: Get.back, showClose: showClose),
+          body: child,
         ),
       ),
     );

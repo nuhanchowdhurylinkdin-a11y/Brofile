@@ -1,3 +1,4 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/features/home/controllers/messages_controller.dart';
@@ -19,21 +20,17 @@ class MessagesScreen extends GetView<MessagesController> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(title: AppText.messages, onBack: Get.back),
-            const _FilterChips(),
-            Expanded(
-              child: Obx(() {
-                final items = controller.visible;
-                return ListView.builder(
-                  padding: EdgeInsets.fromLTRB(24.w, 0, 24.w, 32.w),
-                  itemCount: items.length,
-                  itemBuilder: (_, index) => _ConversationTile(conversation: items[index]),
-                );
-              }),
-            ),
-          ],
+        body: HideOnScroll(
+          header: PleasureSubHeader(title: AppText.messages, onBack: Get.back),
+          pinned: const _FilterChips(),
+          body: Obx(() {
+            final items = controller.visible;
+            return ListView.builder(
+              padding: EdgeInsets.fromLTRB(24.w, 0, 24.w, 32.w),
+              itemCount: items.length,
+              itemBuilder: (_, index) => _ConversationTile(conversation: items[index]),
+            );
+          }),
         ),
       ),
     );

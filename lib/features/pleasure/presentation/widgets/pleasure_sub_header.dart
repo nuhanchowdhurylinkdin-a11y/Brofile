@@ -1,5 +1,6 @@
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
+import 'package:brofile/core/utils/helpers/app_platform.dart';
 import 'package:brofile/features/home/presentation/widgets/home_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +13,7 @@ class PleasureSubHeader extends StatelessWidget {
     required this.onBack,
     this.subtitle,
     this.onClose,
-    this.showClose = true,
+    this.showClose = false,
   });
 
   final String title;
@@ -31,15 +32,7 @@ class PleasureSubHeader extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(24.w, 16.w, 24.w, 16.w),
           child: Row(
             children: [
-              GestureDetector(
-                onTap: onBack,
-                behavior: HitTestBehavior.opaque,
-                child: SvgPicture.asset(
-                  IconPath.pleasureBack,
-                  width: 24.w,
-                  height: 24.w,
-                ),
-              ),
+              AppBackButton(onTap: onBack),
               Expanded(
                 child: Column(
                   children: [

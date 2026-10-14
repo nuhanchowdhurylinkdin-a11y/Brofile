@@ -1,3 +1,4 @@
+import 'package:brofile/core/common/widgets/hide_on_scroll.dart';
 import 'package:brofile/core/utils/constants/app_texts.dart';
 import 'package:brofile/core/utils/constants/colors.dart';
 import 'package:brofile/core/utils/constants/icon_path.dart';
@@ -21,26 +22,22 @@ class CommunityNewPostScreen extends GetView<CommunityNewPostController> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: AppColors.surface,
-        body: Column(
-          children: [
-            PleasureSubHeader(
-              title: AppText.newPost,
-              onBack: controller.onBack,
-              onClose: Get.back,
-            ),
-            Expanded(
-              child: Obx(() {
-                switch (controller.step.value) {
-                  case CommunityNewPostStep.gallery:
-                    return const _GalleryStep();
-                  case CommunityNewPostStep.caption:
-                    return const _CaptionStep();
-                  case CommunityNewPostStep.write:
-                    return const _WriteStep();
-                }
-              }),
-            ),
-          ],
+        body: HideOnScroll(
+          header: PleasureSubHeader(
+            title: AppText.newPost,
+            onBack: controller.onBack,
+            onClose: Get.back,
+          ),
+          body: Obx(() {
+            switch (controller.step.value) {
+              case CommunityNewPostStep.gallery:
+                return const _GalleryStep();
+              case CommunityNewPostStep.caption:
+                return const _CaptionStep();
+              case CommunityNewPostStep.write:
+                return const _WriteStep();
+            }
+          }),
         ),
       ),
     );

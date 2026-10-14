@@ -1,25 +1,18 @@
 import 'package:brofile/core/utils/constants/colors.dart';
-import 'package:brofile/core/utils/constants/icon_path.dart';
+import 'package:brofile/core/utils/helpers/app_platform.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AuthBackButton extends StatelessWidget {
-  const AuthBackButton({super.key, this.icon = IconPath.arrowBack});
-
-  final String icon;
+  const AuthBackButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: Get.back,
-      behavior: HitTestBehavior.opaque,
-      child: Padding(
-        padding: EdgeInsets.all(8.r),
-        child: SvgPicture.asset(icon, width: 24.r, height: 24.r),
-      ),
+    return Padding(
+      padding: EdgeInsets.all(8.r),
+      child: AppBackButton(onTap: Get.back),
     );
   }
 }
